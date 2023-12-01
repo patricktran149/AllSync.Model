@@ -1,8 +1,8 @@
 package Model
 
 import (
-	helper "Helper"
 	"errors"
+	helper "github.com/patricktran149/Helper"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"strings"
 )

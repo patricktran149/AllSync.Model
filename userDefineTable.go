@@ -1,9 +1,9 @@
 package Model
 
 import (
-	helper "Helper"
 	"errors"
 	"fmt"
+	helper "github.com/patricktran149/Helper"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"strconv"
