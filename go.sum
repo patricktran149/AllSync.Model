@@ -11,8 +11,8 @@ github.com/maja42/goval v1.3.1/go.mod h1:LDMwF8ocOwIsMZdwoyHC/3UpV8ABDwEzalxkVV2
 github.com/mbordner/kazaam v3.4.7+incompatible h1:Mc4Ho8fhG+A+xEREh8SafGUQdBw/Fg5J17uxaSL4QN8=
 github.com/mbordner/kazaam v3.4.7+incompatible/go.mod h1:I37oEeYhHYgMuC1oJf8ZBVvNVs4ZEzGtaWgJsDb/Eq4=
 github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe/go.mod h1:wL8QJuTMNUDYhXwkmfOly8iTdp5TEcJFWZD2D7SIkUc=
-github.com/patricktran149/Helper v0.0.0-20231201085455-ec2ef123439f h1:FtmfNVpJRXJgU57kIU6+Jxet9yJ7QyfWMYhoU21ZIU0=
-github.com/patricktran149/Helper v0.0.0-20231201085455-ec2ef123439f/go.mod h1:egvqEz2DcRfHhCR+mrnxjsSGBQ5rC+1vtLfBDZX8poQ=
+github.com/patricktran149/Helper v0.0.0-20231201091600-8655925d9115 h1:Q30RtMDeqNSyckbcsUvYoNrZHOunf5RbSL/c+EfwcDE=
+github.com/patricktran149/Helper v0.0.0-20231201091600-8655925d9115/go.mod h1:egvqEz2DcRfHhCR+mrnxjsSGBQ5rC+1vtLfBDZX8poQ=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/qntfy/jsonparser v1.0.2 h1:hko+J4L7HSaYoB2yuzinWc9MkO93zWKUmzPHJwB53OM=
 github.com/qntfy/jsonparser v1.0.2/go.mod h1:F+LCdwPnFBsubQ+ugnBczIP9RWv5wSCqnUmLHPUx4ZU=

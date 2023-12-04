@@ -1,9 +1,9 @@
 module github.com/patricktran149/AllSync.Model
 
-go 1.19
+go 1.20
 
 require (
-	github.com/patricktran149/Helper v0.0.0-20231201085455-ec2ef123439f
+	github.com/patricktran149/Helper v0.0.0-20231201091600-8655925d9115
 	go.mongodb.org/mongo-driver v1.13.0
 )
 
