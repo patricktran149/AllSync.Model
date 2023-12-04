@@ -2,7 +2,6 @@ package Model
 
 import (
 	"errors"
-	helper "github.com/patricktran149/Helper"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"strings"
 )
@@ -57,25 +56,25 @@ type Queue2QueueUpdateRequest struct {
 }
 
 func (qReq *Queue2QueueRequest) Validate() error {
-	if !helper.IsStringInArray(qReq.FromQueue, []string{"Incoming", "Outgoing"}) {
+	if !IsStringInArray(qReq.FromQueue, []string{"Incoming", "Outgoing"}) {
 		return errors.New("Invalid From Queue ")
 	}
 
 	qReq.FromQueue = strings.Title(strings.ToLower(qReq.FromQueue))
 
-	if !helper.IsStringInArray(qReq.FromStatus, []string{"PENDING", "FAILED", "SUCCESS"}) {
+	if !IsStringInArray(qReq.FromStatus, []string{"PENDING", "FAILED", "SUCCESS"}) {
 		return errors.New("Invalid From Status ")
 	}
 
 	qReq.FromStatus = strings.ToUpper(qReq.FromStatus)
 
-	if !helper.IsStringInArray(qReq.FromMode, []string{"ADD", "UPDATE", "BOTH"}) {
+	if !IsStringInArray(qReq.FromMode, []string{"ADD", "UPDATE", "BOTH"}) {
 		return errors.New("Invalid From Mode ")
 	}
 
 	qReq.FromMode = strings.ToUpper(qReq.FromMode)
 
-	toRawDataType, ok := helper.IsStringInArrayAndGet(qReq.ToRawDataType, []string{"rawData", "sendData", "responseData"})
+	toRawDataType, ok := IsStringInArrayAndGet(qReq.ToRawDataType, []string{"rawData", "sendData", "responseData"})
 	if !ok {
 		return errors.New("Invalid To Raw Data Type ")
 	}

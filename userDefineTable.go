@@ -3,7 +3,6 @@ package Model
 import (
 	"errors"
 	"fmt"
-	helper "github.com/patricktran149/Helper"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"strconv"
@@ -170,7 +169,7 @@ func (udtF UserDefinedTableFilter) GenerateFilterBson(udf UserDefinedField, valu
 			return op, errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", value, err.Error()))
 		}
 
-		op[operation] = helper.RoundNumberDecimalN(number, 2)
+		op[operation] = RoundNumberDecimalN(number, 2)
 	}
 
 	return
@@ -183,7 +182,7 @@ func (fc FieldCompare) GenerateFilterBson(udf UserDefinedField) (op bson.M, err 
 	switch udf.DataType {
 	case DataTypeText:
 		if fc.Operation == FilterOperationContain {
-			op[operation] = primitive.Regex{Pattern: helper.EscapeToRegex(fc.Value), Options: "i"}
+			op[operation] = primitive.Regex{Pattern: EscapeToRegex(fc.Value), Options: "i"}
 		}
 	case DataTypeNumber:
 		number, err := strconv.ParseFloat(fc.Value, 64)
@@ -191,7 +190,7 @@ func (fc FieldCompare) GenerateFilterBson(udf UserDefinedField) (op bson.M, err 
 			return op, errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, err.Error()))
 		}
 
-		op[operation] = helper.RoundNumberDecimalN(number, 2)
+		op[operation] = RoundNumberDecimalN(number, 2)
 	case DataTypeDate:
 		number, err := strconv.ParseInt(fc.Value, 10, 64)
 		if err != nil {
@@ -391,7 +390,7 @@ func (table UserDefinedTable) GetSeriesField() (f UserDefinedField) {
 
 func (table UserDefinedTable) CheckDefaultHeaderField(fieldName string) bool {
 	for _, field := range table.Fields {
-		if helper.StringToCompareString(field.Name) == helper.StringToCompareString(fieldName) {
+		if StringToCompareString(field.Name) == StringToCompareString(fieldName) {
 			return true
 		}
 	}
@@ -540,7 +539,7 @@ func (field UserDefinedField) ValidTypeValue(value interface{}) (returnVal inter
 			returnVal = int64(i)
 
 		} else if ft == DataTypeNumber {
-			returnVal = helper.RoundNumberDecimalN(i, field.Decimal)
+			returnVal = RoundNumberDecimalN(i, field.Decimal)
 		}
 	}
 
@@ -603,7 +602,7 @@ func (field UserDefinedField) ValidTypeValue(value interface{}) (returnVal inter
 
 func checkFieldExists(fields []UserDefinedField, fieldName string) bool {
 	for _, field := range fields {
-		if helper.StringToCompareString(field.Name) == helper.StringToCompareString(fieldName) {
+		if StringToCompareString(field.Name) == StringToCompareString(fieldName) {
 			return true
 		}
 	}

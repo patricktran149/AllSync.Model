@@ -3,7 +3,6 @@ package Model
 import (
 	"errors"
 	"fmt"
-	helper "github.com/patricktran149/Helper"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"strings"
 )
@@ -234,7 +233,7 @@ const (
 
 func (a *HMACAlgorithm) isValidType() bool {
 	*a = HMACAlgorithm(strings.ToUpper(strings.TrimSpace(string(*a))))
-	if !helper.IsItemExistsInArray(*a, []HMACAlgorithm{
+	if !IsItemExistsInArray(*a, []HMACAlgorithm{
 		HMACAlgorithmSHA1,
 		HMACAlgorithmSHA256,
 		HMACAlgorithmSHA512,
@@ -252,7 +251,7 @@ type AuthenticationType string
 
 func (t *AuthenticationType) isValidType() bool {
 	*t = AuthenticationType(strings.ToUpper(strings.TrimSpace(string(*t))))
-	if !helper.IsItemExistsInArray(*t, []AuthenticationType{
+	if !IsItemExistsInArray(*t, []AuthenticationType{
 		AuthenticationTypeBearer,
 		AuthenticationTypeBasic,
 		AuthenticationTypeHmac,
@@ -289,7 +288,7 @@ const (
 
 func (fm *FlowMethod) isValid() bool {
 	*fm = FlowMethod(strings.ToUpper(strings.ReplaceAll(strings.Trim(string(*fm), " "), "_", "")))
-	if !helper.IsItemExistsInArray(*fm, []FlowMethod{FlowMethodAPI, FlowMethodSFTP, FlowMethodQueue, FlowMethodS3, FlowMethodSQL, FlowMethodOracle}) {
+	if !IsItemExistsInArray(*fm, []FlowMethod{FlowMethodAPI, FlowMethodSFTP, FlowMethodQueue, FlowMethodS3, FlowMethodSQL, FlowMethodOracle}) {
 		return false
 	}
 
@@ -308,7 +307,7 @@ const (
 
 func (fMod *FlowMode) isValid() bool {
 	*fMod = FlowMode(strings.ToUpper(strings.ReplaceAll(strings.Trim(string(*fMod), " "), "_", "")))
-	if !helper.IsItemExistsInArray(*fMod, []FlowMode{FlowModeAdd, FlowModeUpdate, FlowModeBoth}) {
+	if !IsItemExistsInArray(*fMod, []FlowMode{FlowModeAdd, FlowModeUpdate, FlowModeBoth}) {
 		return false
 	}
 
@@ -330,7 +329,7 @@ const (
 
 func (t *SignatureMethod) isValidType() bool {
 	*t = SignatureMethod(strings.ToUpper(strings.TrimSpace(string(*t))))
-	if !helper.IsItemExistsInArray(*t, []SignatureMethod{
+	if !IsItemExistsInArray(*t, []SignatureMethod{
 		SignatureMethodHMACSHA1,
 		SignatureMethodHMACSHA256,
 		SignatureMethodHMACSHA512,

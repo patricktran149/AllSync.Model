@@ -2,7 +2,6 @@ package Model
 
 import (
 	"errors"
-	helper "github.com/patricktran149/Helper"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"net/http"
@@ -153,7 +152,7 @@ func (hook *ApplicationObjectWebHook) Validate() (err error) {
 
 	//Validate method
 	hook.Method = strings.ToUpper(strings.TrimSpace(hook.Method))
-	if !helper.IsItemExistsInArray(hook.Method, []string{http.MethodPost, http.MethodPut, http.MethodPatch}) {
+	if !IsItemExistsInArray(hook.Method, []string{http.MethodPost, http.MethodPut, http.MethodPatch}) {
 		return errors.New("Invalid Method! ")
 	}
 
@@ -215,9 +214,9 @@ func (app *Application) GetConfig(id string) (appConfig ApplicationConfiguration
 
 	var bt []byte
 
-	rawData := helper.JSONToString(data)
+	rawData := JSONToString(data)
 
-	specConfig = helper.JSONToString(object.Mapping.Out)
+	specConfig = JSONToString(object.Mapping.Out)
 
 	k, err = kazaam.NewKazaam(specConfig)
 	if err != nil {

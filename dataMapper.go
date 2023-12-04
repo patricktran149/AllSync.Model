@@ -2,7 +2,6 @@ package Model
 
 import (
 	"errors"
-	helper "github.com/patricktran149/Helper"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"strings"
 )
@@ -48,7 +47,7 @@ const (
 )
 
 func (dmReq DataMapperRequest) Validate() error {
-	if !helper.IsItemExistsInArray(DataMapperDirection(strings.ToUpper(string(dmReq.Direction))), []DataMapperDirection{DataMapperDirectionIn, DataMapperDirectionOut}) {
+	if !IsItemExistsInArray(DataMapperDirection(strings.ToUpper(string(dmReq.Direction))), []DataMapperDirection{DataMapperDirectionIn, DataMapperDirectionOut}) {
 		return errors.New("Direction is invalid ")
 	}
 
