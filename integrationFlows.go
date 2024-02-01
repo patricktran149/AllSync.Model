@@ -96,6 +96,7 @@ type SFTPConfig struct {
 	Path     string `json:"path" bson:"path"`
 	Ext      string `json:"ext" bson:"ext"`
 	CSVComma string `json:"comma" bson:"comma"`
+	FileName string `json:"fileName" bson:"fileName"`
 }
 
 type SQLConfig struct {
