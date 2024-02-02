@@ -23,21 +23,21 @@ type IntegrationFlow struct {
 }
 
 type IntegrationFlowConfig struct {
-	ApplicationID   string                     `json:"applicationID" bson:"applicationID"`
-	Condition       string                     `json:"condition" bson:"condition"`
-	Mode            FlowMode                   `json:"mode" bson:"mode"`
-	Method          FlowMethod                 `json:"method" bson:"method"`
-	S3              S3                         `json:"s3" bson:"s3"`
-	SFTP            SFTPConfig                 `json:"sftp" bson:"sftp"`
-	API             APIConfig                  `json:"api" bson:"api"`
-	OAuth           APIConfig                  `json:"oAuth" bson:"oAuth"`
-	SQL             SQLConfig                  `json:"sql" bson:"sql"`
-	Oracle          OracleConfig               `json:"oracle" bson:"oracle"`
-	Data            map[string]interface{}     `json:"data" bson:"data"`
-	Template        string                     `json:"template" bson:"template"`
-	ResponseMapping string                     `json:"responseMapping" bson:"responseMapping"`
-	SuccessTarget   IntegrationFlowConfigAfter `json:"successTarget" bson:"successTarget"`
-	FailedTarget    IntegrationFlowConfigAfter `json:"failedTarget" bson:"failedTarget"`
+	ApplicationID   string                 `json:"applicationID" bson:"applicationID"`
+	Condition       string                 `json:"condition" bson:"condition"`
+	Mode            FlowMode               `json:"mode" bson:"mode"`
+	Method          FlowMethod             `json:"method" bson:"method"`
+	S3              S3                     `json:"s3" bson:"s3"`
+	SFTP            SFTPConfig             `json:"sftp" bson:"sftp"`
+	API             APIConfig              `json:"api" bson:"api"`
+	OAuth           APIConfig              `json:"oAuth" bson:"oAuth"`
+	SQL             SQLConfig              `json:"sql" bson:"sql"`
+	Oracle          OracleConfig           `json:"oracle" bson:"oracle"`
+	Data            map[string]interface{} `json:"data" bson:"data"`
+	Template        string                 `json:"template" bson:"template"`
+	ResponseMapping string                 `json:"responseMapping" bson:"responseMapping"`
+	SuccessTarget   *IntegrationFlowConfig `json:"successTarget" bson:"successTarget"`
+	FailedTarget    *IntegrationFlowConfig `json:"failedTarget" bson:"failedTarget"`
 }
 
 type IntegrationFlowConfigAfter struct {
