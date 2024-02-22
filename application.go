@@ -14,6 +14,7 @@ type Application struct {
 	ApplicationName     string                     `json:"applicationName" bson:"applicationName"`
 	Token               Token                      `json:"token" bson:"token"`
 	ImmediateRetryTimes int                        `json:"immediateRetryTimes" bson:"immediateRetryTimes"`
+	OutgoingAPISleep    int                        `json:"outgoingAPISleep" bson:"outgoingAPISleep"`
 	AutoRetry           bool                       `json:"autoRetry" bson:"autoRetry"`
 	CreatedDate         int64                      `json:"createdDate" bson:"createdDate"`
 	CreatedBy           string                     `json:"createdBy" bson:"createdBy"`
