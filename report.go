@@ -7,6 +7,7 @@ type Report struct {
 	Description string             `json:"description" bson:"description"`
 	Layout      string             `json:"layout" bson:"layout"`
 	ReportType  string             `json:"reportType" bson:"reportType"`
+	Table       string             `json:"table" bson:"table"`
 	CreatedDate int64              `json:"createdDate" bson:"createdDate"`
 	CreatedBy   string             `json:"createdBy" bson:"createdBy"`
 	UpdatedDate int64              `json:"updatedDate" bson:"updatedDate"`
@@ -18,6 +19,7 @@ type ReportRequest struct {
 	Description string             `json:"description" bson:"description"`
 	Layout      string             `json:"layout" bson:"layout"`
 	ReportType  string             `json:"reportType" bson:"reportType"`
+	Table       string             `json:"table" bson:"table"`
 	CreatedBy   string             `json:"createdBy" bson:"createdBy"`
 	UpdatedBy   string             `json:"updatedBy" bson:"updatedBy"`
 }
@@ -27,5 +29,6 @@ type ReportUpdateRequest struct {
 	Description string             `json:"description" bson:"description"`
 	Layout      string             `json:"layout" bson:"layout"`
 	ReportType  string             `json:"reportType" bson:"reportType"`
+	Table       string             `json:"table" bson:"table"`
 	UpdatedBy   string             `json:"updatedBy" bson:"updatedBy"`
 }
