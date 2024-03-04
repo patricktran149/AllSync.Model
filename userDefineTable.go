@@ -120,8 +120,13 @@ type UserDefinedField struct {
 	IsUnique          bool               `json:"isUnique" bson:"isUnique"`
 	IsSummary         bool               `json:"isSummary" bson:"isSummary"`
 	IsMongoQueryField bool               `json:"isMongoQueryField" bson:"isMongoQueryField"`
-	MongoQuery        string             `json:"mongoQuery" bson:"mongoQuery"`
+	MongoQuery        *MongoQuery        `json:"mongoQuery" bson:"mongoQuery"`
 	Fields            []UserDefinedField `json:"fields" bson:"fields"`
+}
+
+type MongoQuery struct {
+	CollectionName string `json:"collectionName"`
+	Query          string `json:"query"`
 }
 
 // --------------------- Field ---------------------
