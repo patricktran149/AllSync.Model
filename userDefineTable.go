@@ -86,47 +86,47 @@ type UserDefinedTableUpdateRequest struct {
 }
 
 type UserDefinedField struct {
-	Name              string             `json:"name" bson:"name"`
-	Description       string             `json:"description" bson:"description"`
-	Overview          string             `json:"overview" bson:"overview"`
-	GridColumnWidth   int                `json:"gridColumnWidth" bson:"gridColumnWidth"`
-	DataType          DataType           `json:"dataType" bson:"dataType"`
-	Decimal           int                `json:"decimal" bson:"decimal"`
-	ValidValue        []ValidValue       `json:"validValue" bson:"validValue"`
-	DataLength        int                `json:"dataLength" bson:"dataLength"`
-	Formula           string             `json:"formula" bson:"formula"`
-	TableName         string             `json:"tableName" bson:"tableName"`
-	ImagePath         string             `json:"imagePath" bson:"imagePath"`
-	Filter            string             `json:"filter" bson:"filter"`
-	DefaultValue      interface{}        `json:"defaultValue" bson:"defaultValue"`
-	Sequence          int                `json:"sequence" bson:"sequence"`
-	MinLength         int                `json:"minLength" bson:"minLength"`
-	Design            string             `json:"design" bson:"design"`
-	DesignMobile      string             `json:"designMobile" bson:"designMobile"`
-	LinkedField       string             `json:"linkedField" bson:"linkedField"`
-	RegEx             string             `json:"regEx" bson:"regEx"`
-	FieldValueLock    string             `json:"fieldValueLock" bson:"fieldValueLock"`
-	ShowInGrid        bool               `json:"showInGrid" bson:"showInGrid"`
-	IsPrimary         bool               `json:"isPrimary" bson:"isPrimary"`
-	IsRequired        bool               `json:"isRequired" bson:"isRequired"`
-	IsArray           bool               `json:"isArray" bson:"isArray"`
-	IsSearchable      bool               `json:"isSearchable" bson:"isSearchable"`
-	IsFormula         bool               `json:"isFormula" bson:"isFormula"`
-	IsMasked          bool               `json:"isMasked" bson:"isMasked"`
-	IsEditable        bool               `json:"isEditable" bson:"isEditable"`
-	IsSeries          bool               `json:"isSeries" bson:"isSeries"`
-	IsReadOnly        bool               `json:"isReadOnly" bson:"isReadOnly"`
-	BarcodeScan       bool               `json:"barcode_scan" bson:"barcode_scan"`
-	IsUnique          bool               `json:"isUnique" bson:"isUnique"`
-	IsSummary         bool               `json:"isSummary" bson:"isSummary"`
-	IsMongoQueryField bool               `json:"isMongoQueryField" bson:"isMongoQueryField"`
-	MongoQuery        *MongoQuery        `json:"mongoQuery" bson:"mongoQuery"`
-	Fields            []UserDefinedField `json:"fields" bson:"fields"`
+	Name            string             `json:"name" bson:"name"`
+	Description     string             `json:"description" bson:"description"`
+	Overview        string             `json:"overview" bson:"overview"`
+	GridColumnWidth int                `json:"gridColumnWidth" bson:"gridColumnWidth"`
+	DataType        DataType           `json:"dataType" bson:"dataType"`
+	Decimal         int                `json:"decimal" bson:"decimal"`
+	ValidValue      []ValidValue       `json:"validValue" bson:"validValue"`
+	DataLength      int                `json:"dataLength" bson:"dataLength"`
+	Formula         string             `json:"formula" bson:"formula"`
+	TableName       string             `json:"tableName" bson:"tableName"`
+	ImagePath       string             `json:"imagePath" bson:"imagePath"`
+	Filter          string             `json:"filter" bson:"filter"`
+	DefaultValue    interface{}        `json:"defaultValue" bson:"defaultValue"`
+	Sequence        int                `json:"sequence" bson:"sequence"`
+	MinLength       int                `json:"minLength" bson:"minLength"`
+	Design          string             `json:"design" bson:"design"`
+	DesignMobile    string             `json:"designMobile" bson:"designMobile"`
+	LinkedField     string             `json:"linkedField" bson:"linkedField"`
+	RegEx           string             `json:"regEx" bson:"regEx"`
+	FieldValueLock  string             `json:"fieldValueLock" bson:"fieldValueLock"`
+	ShowInGrid      bool               `json:"showInGrid" bson:"showInGrid"`
+	IsPrimary       bool               `json:"isPrimary" bson:"isPrimary"`
+	IsRequired      bool               `json:"isRequired" bson:"isRequired"`
+	IsArray         bool               `json:"isArray" bson:"isArray"`
+	IsSearchable    bool               `json:"isSearchable" bson:"isSearchable"`
+	IsFormula       bool               `json:"isFormula" bson:"isFormula"`
+	IsMasked        bool               `json:"isMasked" bson:"isMasked"`
+	IsEditable      bool               `json:"isEditable" bson:"isEditable"`
+	IsSeries        bool               `json:"isSeries" bson:"isSeries"`
+	IsReadOnly      bool               `json:"isReadOnly" bson:"isReadOnly"`
+	BarcodeScan     bool               `json:"barcode_scan" bson:"barcode_scan"`
+	IsUnique        bool               `json:"isUnique" bson:"isUnique"`
+	IsSummary       bool               `json:"isSummary" bson:"isSummary"`
+	IsMongoQuery    bool               `json:"isMongoQuery" bson:"isMongoQuery"`
+	MongoQuery      *MongoQuery        `json:"mongoQuery" bson:"mongoQuery"`
+	Fields          []UserDefinedField `json:"fields" bson:"fields"`
 }
 
 type MongoQuery struct {
-	CollectionName string `json:"collectionName"`
-	Query          string `json:"query"`
+	TableName string `json:"tableName"`
+	Query     string `json:"query"`
 }
 
 // --------------------- Field ---------------------
