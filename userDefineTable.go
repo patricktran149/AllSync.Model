@@ -141,21 +141,27 @@ type FilterOperation string
 
 const (
 	FilterOperationEqual          FilterOperation = "EQUAL"
+	FilterOperationNotEqual       FilterOperation = "NOT_EQUAL"
 	FilterOperationLess           FilterOperation = "LESS"
 	FilterOperationLessOrEqual    FilterOperation = "LESS_OR_EQUAL"
 	FilterOperationGreater        FilterOperation = "GREATER"
 	FilterOperationGreaterOrEqual FilterOperation = "GREATER_OR_EQUAL"
 	FilterOperationContain        FilterOperation = "CONTAIN"
+	FilterOperationIn             FilterOperation = "IN"
+	FilterOperationNotIn          FilterOperation = "NOT_IN"
 )
 
 func (udfFO FilterOperation) Mapping() string {
 	return map[FilterOperation]string{
 		FilterOperationEqual:          "$eq",
+		FilterOperationNotEqual:       "$ne",
 		FilterOperationLess:           "$lt",
 		FilterOperationLessOrEqual:    "$lte",
 		FilterOperationGreater:        "$gt",
 		FilterOperationGreaterOrEqual: "$gte",
 		FilterOperationContain:        "$regex",
+		FilterOperationIn:             "$in",
+		FilterOperationNotIn:          "$nin",
 	}[udfFO]
 }
 
@@ -186,6 +192,53 @@ func (fc FieldCompare) GenerateFilterBson(udf UserDefinedField) (op bson.M, err 
 	operation := fc.Operation.Mapping()
 	op = bson.M{operation: fc.Value}
 
+	if fc.Operation == FilterOperationIn || fc.Operation == FilterOperationNotIn {
+		valueStrList := strings.Split(fc.Value, ";")
+
+		switch udf.DataType {
+		case DataTypeText:
+			op[operation] = bson.A{valueStrList}
+		case DataTypeNumber:
+			numberList := make([]float64, 0)
+			for _, v := range valueStrList {
+				number, err := strconv.ParseFloat(v, 64)
+				if err != nil {
+					return op, errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, err.Error()))
+				}
+
+				numberList = append(numberList, number)
+			}
+
+			op[operation] = bson.A{numberList}
+		case DataTypeDate:
+			numberList := make([]int64, 0)
+			for _, v := range valueStrList {
+				number, err := strconv.ParseInt(v, 10, 64)
+				if err != nil {
+					return op, errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, err.Error()))
+				}
+
+				numberList = append(numberList, number)
+			}
+
+			op[operation] = numberList
+		case DataTypeBoolean:
+			booleanList := make([]bool, 0)
+			for _, v := range valueStrList {
+				b, err := strconv.ParseBool(v)
+				if err != nil {
+					return op, errors.New(fmt.Sprintf("Parse [%s] to boolean ERROR - %s", fc.Value, err.Error()))
+				}
+
+				booleanList = append(booleanList, b)
+			}
+
+			op[operation] = booleanList
+		}
+
+		return
+	}
+
 	switch udf.DataType {
 	case DataTypeText:
 		if fc.Operation == FilterOperationContain {
@@ -211,7 +264,9 @@ func (fc FieldCompare) GenerateFilterBson(udf UserDefinedField) (op bson.M, err 
 			return op, errors.New(fmt.Sprintf("Parse [%s] to boolean ERROR - %s", fc.Value, err.Error()))
 		}
 
-		op["$eq"] = b
+		if fc.Operation == FilterOperationEqual || fc.Operation == FilterOperationNotEqual {
+			op[operation] = b
+		}
 	}
 
 	return
