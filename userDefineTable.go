@@ -197,7 +197,7 @@ func (fc FieldCompare) GenerateFilterBson(udf UserDefinedField) (op bson.M, err 
 
 		switch udf.DataType {
 		case DataTypeText:
-			op[operation] = bson.A{valueStrList}
+			op[operation] = valueStrList
 		case DataTypeNumber:
 			numberList := make([]float64, 0)
 			for _, v := range valueStrList {
@@ -209,7 +209,7 @@ func (fc FieldCompare) GenerateFilterBson(udf UserDefinedField) (op bson.M, err 
 				numberList = append(numberList, number)
 			}
 
-			op[operation] = bson.A{numberList}
+			op[operation] = numberList
 		case DataTypeDate:
 			numberList := make([]int64, 0)
 			for _, v := range valueStrList {
