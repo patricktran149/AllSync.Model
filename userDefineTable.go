@@ -149,6 +149,8 @@ const (
 	FilterOperationContain        FilterOperation = "CONTAIN"
 	FilterOperationIn             FilterOperation = "IN"
 	FilterOperationNotIn          FilterOperation = "NOT_IN"
+	FilterOperationAllIn          FilterOperation = "ALL_IN"
+	FilterOperationNotAllIn       FilterOperation = "NOT_ALL_IN"
 )
 
 func (udfFO FilterOperation) Mapping() string {
@@ -162,6 +164,8 @@ func (udfFO FilterOperation) Mapping() string {
 		FilterOperationContain:        "$regex",
 		FilterOperationIn:             "$in",
 		FilterOperationNotIn:          "$nin",
+		FilterOperationAllIn:          "$all",
+		FilterOperationNotAllIn:       "$all",
 	}[udfFO]
 }
 
@@ -192,7 +196,8 @@ func (fc FieldCompare) GenerateFilterBson(udf UserDefinedField) (op bson.M, err 
 	operation := fc.Operation.Mapping()
 	op = bson.M{operation: fc.Value}
 
-	if fc.Operation == FilterOperationIn || fc.Operation == FilterOperationNotIn {
+	arrayOperationList := []FilterOperation{FilterOperationIn, FilterOperationNotIn, FilterOperationAllIn, FilterOperationNotAllIn}
+	if IsItemExistsInArray(fc.Operation, arrayOperationList) {
 		valueStrList := strings.Split(fc.Value, ";")
 
 		switch udf.DataType {
@@ -234,6 +239,11 @@ func (fc FieldCompare) GenerateFilterBson(udf UserDefinedField) (op bson.M, err 
 			}
 
 			op[operation] = booleanList
+		}
+
+		if fc.Operation == FilterOperationNotAllIn {
+			op["$not"] = op[operation]
+			delete(op, operation)
 		}
 
 		return
