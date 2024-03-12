@@ -242,7 +242,7 @@ func (fc FieldCompare) GenerateFilterBson(udf UserDefinedField) (op bson.M, err 
 		}
 
 		if fc.Operation == FilterOperationNotAllIn {
-			op["$not"] = op[operation]
+			op["$not"] = op
 			delete(op, operation)
 		}
 
