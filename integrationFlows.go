@@ -290,17 +290,18 @@ const (
 type FlowMethod string
 
 const (
-	FlowMethodAPI    FlowMethod = "API"
-	FlowMethodSFTP   FlowMethod = "SFTP"
-	FlowMethodQueue  FlowMethod = "QUEUE"
-	FlowMethodSQL    FlowMethod = "SQL"
-	FlowMethodOracle FlowMethod = "ORACLE"
-	FlowMethodS3     FlowMethod = "S3"
+	FlowMethodAPI     FlowMethod = "API"
+	FlowMethodSFTP    FlowMethod = "SFTP"
+	FlowMethodQueue   FlowMethod = "QUEUE"
+	FlowMethodSQL     FlowMethod = "SQL"
+	FlowMethodOracle  FlowMethod = "ORACLE"
+	FlowMethodS3      FlowMethod = "S3"
+	FlowMethodSAPHana FlowMethod = "SAP_HANA"
 )
 
 func (fm *FlowMethod) isValid() bool {
 	*fm = FlowMethod(strings.ToUpper(strings.ReplaceAll(strings.Trim(string(*fm), " "), "_", "")))
-	if !IsItemExistsInArray(*fm, []FlowMethod{FlowMethodAPI, FlowMethodSFTP, FlowMethodQueue, FlowMethodS3, FlowMethodSQL, FlowMethodOracle}) {
+	if !IsItemExistsInArray(*fm, []FlowMethod{FlowMethodAPI, FlowMethodSFTP, FlowMethodQueue, FlowMethodS3, FlowMethodSQL, FlowMethodOracle, FlowMethodSAPHana}) {
 		return false
 	}
 
