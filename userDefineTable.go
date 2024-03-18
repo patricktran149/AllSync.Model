@@ -152,6 +152,7 @@ const (
 	FilterOperationNotIn          FilterOperation = "NOT_IN"
 	FilterOperationAllIn          FilterOperation = "ALL_IN"
 	FilterOperationNotAllIn       FilterOperation = "NOT_ALL_IN"
+	FilterOperationAllOut         FilterOperation = "ALL_OUT"
 )
 
 func (udfFO FilterOperation) Mapping() string {
@@ -243,8 +244,9 @@ func (fc FieldCompare) GenerateFilterBson(udf UserDefinedField) (op bson.M, err 
 		}
 
 		if fc.Operation == FilterOperationNotAllIn {
-			op["$not"] = deepcopy.Copy(op).(bson.M)
-			delete(op, operation)
+			tmp := deepcopy.Copy(op).(bson.M)
+			op = make(bson.M)
+			op["$not"] = tmp
 		}
 
 		return
