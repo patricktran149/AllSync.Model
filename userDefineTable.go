@@ -213,9 +213,9 @@ func (fc FieldCompare) MappingBsonM(udf UserDefinedField) (firstMatch bson.M, ne
 		case DataTypeNumber:
 			numberList := make([]float64, 0)
 			for _, v := range valueStrList {
-				number, err := strconv.ParseFloat(v, 64)
-				if err != nil {
-					err = errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, err.Error()))
+				number, errF := strconv.ParseFloat(v, 64)
+				if errF != nil {
+					err = errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, errF.Error()))
 					return
 				}
 
@@ -226,9 +226,9 @@ func (fc FieldCompare) MappingBsonM(udf UserDefinedField) (firstMatch bson.M, ne
 		case DataTypeDate:
 			numberList := make([]int64, 0)
 			for _, v := range valueStrList {
-				number, err := strconv.ParseInt(v, 10, 64)
-				if err != nil {
-					err = errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, err.Error()))
+				number, errF := strconv.ParseInt(v, 10, 64)
+				if errF != nil {
+					err = errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, errF.Error()))
 					return
 				}
 
@@ -239,9 +239,9 @@ func (fc FieldCompare) MappingBsonM(udf UserDefinedField) (firstMatch bson.M, ne
 		case DataTypeBoolean:
 			booleanList := make([]bool, 0)
 			for _, v := range valueStrList {
-				b, err := strconv.ParseBool(v)
-				if err != nil {
-					err = errors.New(fmt.Sprintf("Parse [%s] to boolean ERROR - %s", fc.Value, err.Error()))
+				b, errF := strconv.ParseBool(v)
+				if errF != nil {
+					err = errors.New(fmt.Sprintf("Parse [%s] to boolean ERROR - %s", fc.Value, errF.Error()))
 					return
 				}
 
@@ -251,40 +251,39 @@ func (fc FieldCompare) MappingBsonM(udf UserDefinedField) (firstMatch bson.M, ne
 			value = booleanList
 		}
 
-		return
-	}
+	} else {
+		switch udf.DataType {
+		case DataTypeText:
+			value = fc.Value
+			//if fc.Operation == FilterOperationContain {
+			//	op[operation] = primitive.Regex{Pattern: EscapeToRegex(fc.Value), Options: "i"}
+			//}
+		case DataTypeNumber:
+			number, errF := strconv.ParseFloat(fc.Value, 64)
+			if errF != nil {
+				err = errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, errF.Error()))
+				return
+			}
 
-	switch udf.DataType {
-	case DataTypeText:
-		value = fc.Value
-		//if fc.Operation == FilterOperationContain {
-		//	op[operation] = primitive.Regex{Pattern: EscapeToRegex(fc.Value), Options: "i"}
-		//}
-	case DataTypeNumber:
-		number, err := strconv.ParseFloat(fc.Value, 64)
-		if err != nil {
-			err = errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, err.Error()))
-			return
-		}
+			value = RoundNumberDecimalN(number, 2)
+		case DataTypeDate:
+			number, errF := strconv.ParseInt(fc.Value, 10, 64)
+			if errF != nil {
+				err = errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, errF.Error()))
+				return
+			}
 
-		value = RoundNumberDecimalN(number, 2)
-	case DataTypeDate:
-		number, err := strconv.ParseInt(fc.Value, 10, 64)
-		if err != nil {
-			err = errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, err.Error()))
-			return
-		}
+			value = number
+		case DataTypeBoolean:
+			b, errF := strconv.ParseBool(fc.Value)
+			if errF != nil {
+				err = errors.New(fmt.Sprintf("Parse [%s] to boolean ERROR - %s", fc.Value, errF.Error()))
+				return
+			}
 
-		value = number
-	case DataTypeBoolean:
-		b, err := strconv.ParseBool(fc.Value)
-		if err != nil {
-			err = errors.New(fmt.Sprintf("Parse [%s] to boolean ERROR - %s", fc.Value, err.Error()))
-			return
-		}
-
-		if fc.Operation == FilterOperationEqual || fc.Operation == FilterOperationNotEqual {
-			value = b
+			if fc.Operation == FilterOperationEqual || fc.Operation == FilterOperationNotEqual {
+				value = b
+			}
 		}
 	}
 
