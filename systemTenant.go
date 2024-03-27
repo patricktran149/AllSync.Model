@@ -69,3 +69,13 @@ type RateLimit struct {
 	Rate int    `json:"rate" bson:"rate"`
 	Date string `json:"date" bson:"date"`
 }
+
+type IPRequest struct {
+	IP string `json:"ip" bson:"ip"`
+}
+
+type IPResponse struct {
+	ID          primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	IP          string             `json:"ip" bson:"ip"`
+	CreatedDate int64              `json:"createdDate" json:"createdDate"`
+}
