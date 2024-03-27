@@ -194,6 +194,153 @@ func (udtF UserDefinedTableFilter) GenerateFilterBson(udf UserDefinedField, valu
 	return
 }
 
+func (fc FieldCompare) MappingBsonM(udf UserDefinedField) (firstMatch bson.M, nextStages []bson.M, err error) {
+	var value interface{}
+
+	arrayOperationList := []FilterOperation{
+		FilterOperationIn,
+		FilterOperationNotIn,
+		FilterOperationAllIn,
+		FilterOperationNotAllIn,
+		FilterOperationAllOut,
+	}
+	if IsItemExistsInArray(fc.Operation, arrayOperationList) {
+		valueStrList := strings.Split(fc.Value, ";")
+
+		switch udf.DataType {
+		case DataTypeText:
+			value = valueStrList
+		case DataTypeNumber:
+			numberList := make([]float64, 0)
+			for _, v := range valueStrList {
+				number, err := strconv.ParseFloat(v, 64)
+				if err != nil {
+					err = errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, err.Error()))
+					return
+				}
+
+				numberList = append(numberList, number)
+			}
+
+			value = numberList
+		case DataTypeDate:
+			numberList := make([]int64, 0)
+			for _, v := range valueStrList {
+				number, err := strconv.ParseInt(v, 10, 64)
+				if err != nil {
+					err = errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, err.Error()))
+					return
+				}
+
+				numberList = append(numberList, number)
+			}
+
+			value = numberList
+		case DataTypeBoolean:
+			booleanList := make([]bool, 0)
+			for _, v := range valueStrList {
+				b, err := strconv.ParseBool(v)
+				if err != nil {
+					err = errors.New(fmt.Sprintf("Parse [%s] to boolean ERROR - %s", fc.Value, err.Error()))
+					return
+				}
+
+				booleanList = append(booleanList, b)
+			}
+
+			value = booleanList
+		}
+
+		return
+	}
+
+	switch udf.DataType {
+	case DataTypeText:
+		value = fc.Value
+		//if fc.Operation == FilterOperationContain {
+		//	op[operation] = primitive.Regex{Pattern: EscapeToRegex(fc.Value), Options: "i"}
+		//}
+	case DataTypeNumber:
+		number, err := strconv.ParseFloat(fc.Value, 64)
+		if err != nil {
+			err = errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, err.Error()))
+			return
+		}
+
+		value = RoundNumberDecimalN(number, 2)
+	case DataTypeDate:
+		number, err := strconv.ParseInt(fc.Value, 10, 64)
+		if err != nil {
+			err = errors.New(fmt.Sprintf("Parse [%s] to number ERROR - %s", fc.Value, err.Error()))
+			return
+		}
+
+		value = number
+	case DataTypeBoolean:
+		b, err := strconv.ParseBool(fc.Value)
+		if err != nil {
+			err = errors.New(fmt.Sprintf("Parse [%s] to boolean ERROR - %s", fc.Value, err.Error()))
+			return
+		}
+
+		if fc.Operation == FilterOperationEqual || fc.Operation == FilterOperationNotEqual {
+			value = b
+		}
+	}
+
+	switch fc.Operation {
+	case FilterOperationEqual:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$eq": value}}
+	case FilterOperationNotEqual:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$ne": value}}
+	case FilterOperationLess:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$lt": value}}
+	case FilterOperationLessOrEqual:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$lte": value}}
+	case FilterOperationGreater:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$gt": value}}
+	case FilterOperationGreaterOrEqual:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$gte": value}}
+	case FilterOperationContain:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$regex": primitive.Regex{Pattern: EscapeToRegex(fc.Value), Options: "i"}}}
+	case FilterOperationIn:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$in": value}}
+	case FilterOperationNotIn:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$nin": value}}
+	case FilterOperationAllIn:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$all": value}}
+	case FilterOperationNotAllIn:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$not": bson.M{"$all": value}}}
+	case FilterOperationAllOut:
+		firstMatch = bson.M{
+			"$or": bson.A{
+				bson.M{fc.FieldName: bson.M{"$in": value}},
+				bson.M{fc.FieldName: bson.M{"$exists": false}},
+			},
+		}
+
+		nextStages = []bson.M{
+			{
+				"$addFields": bson.M{
+					"unmatched": bson.M{
+						"$setDifference": bson.A{
+							fmt.Sprintf("$%s", fc.FieldName),
+							value,
+						},
+					},
+				},
+			},
+			{
+				"$match": bson.M{
+					"unmatched": bson.M{"$size": 0},
+				},
+			},
+		}
+	}
+
+	return
+}
+
 func (fc FieldCompare) GenerateFilterBson(udf UserDefinedField) (op bson.M, err error) {
 	operation := fc.Operation.Mapping()
 	op = bson.M{operation: fc.Value}
