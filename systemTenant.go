@@ -14,6 +14,7 @@ type Tenant struct {
 	AdminEmail     string             `json:"adminEmail" bson:"adminEmail"`
 	AdminPassword  string             `json:"adminPassword,omitempty" bson:"adminPassword,omitempty"`
 	SMTP           SMTP               `json:"smtp" bson:"smtp"`
+	RateLimit      int                `json:"rateLimit" bson:"rateLimit"`
 	CreatedDate    int64              `json:"createdDate" bson:"createdDate"`
 	CreatedBy      string             `json:"createdBy" bson:"createdBy"`
 	UpdatedDate    int64              `json:"updatedDate" bson:"updatedDate"`
@@ -62,4 +63,9 @@ type TenantDuplicateRequest struct {
 type TenantSchedule struct {
 	TenantID string `json:"tenantID"`
 	Schedule string `json:"schedule"`
+}
+
+type RateLimit struct {
+	Rate int    `json:"rate" bson:"rate"`
+	Date string `json:"date" bson:"date"`
 }
