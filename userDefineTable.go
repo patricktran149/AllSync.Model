@@ -148,11 +148,16 @@ const (
 	FilterOperationGreater        FilterOperation = "GREATER"
 	FilterOperationGreaterOrEqual FilterOperation = "GREATER_OR_EQUAL"
 	FilterOperationContain        FilterOperation = "CONTAIN"
+	FilterOperationNotContain     FilterOperation = "NOT_CONTAIN"
+	FilterOperationStartWith      FilterOperation = "START_WITH"
+	FilterOperationEndWith        FilterOperation = "END_WITH"
 	FilterOperationIn             FilterOperation = "IN"
 	FilterOperationNotIn          FilterOperation = "NOT_IN"
 	FilterOperationAllIn          FilterOperation = "ALL_IN"
 	FilterOperationNotAllIn       FilterOperation = "NOT_ALL_IN"
 	FilterOperationAllOut         FilterOperation = "ALL_OUT"
+	FilterOperationBlank          FilterOperation = "BLANK"
+	FilterOperationNotBlank       FilterOperation = "NOT_BLANK"
 )
 
 func (udfFO FilterOperation) Mapping() string {
@@ -302,6 +307,12 @@ func (fc FieldCompare) MappingBsonM(udf UserDefinedField) (firstMatch bson.M, ne
 		firstMatch = bson.M{fc.FieldName: bson.M{"$gte": value}}
 	case FilterOperationContain:
 		firstMatch = bson.M{fc.FieldName: bson.M{"$regex": primitive.Regex{Pattern: EscapeToRegex(fc.Value), Options: "i"}}}
+	case FilterOperationNotContain:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$not": bson.M{"$regex": primitive.Regex{Pattern: EscapeToRegex(fc.Value), Options: "i"}}}}
+	case FilterOperationStartWith:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$regex": primitive.Regex{Pattern: "^" + EscapeToRegex(fc.Value) + ".*", Options: "i"}}}
+	case FilterOperationEndWith:
+		firstMatch = bson.M{fc.FieldName: bson.M{"$regex": primitive.Regex{Pattern: EscapeToRegex(fc.Value) + ".*$", Options: "i"}}}
 	case FilterOperationIn:
 		firstMatch = bson.M{fc.FieldName: bson.M{"$in": value}}
 	case FilterOperationNotIn:
@@ -332,6 +343,22 @@ func (fc FieldCompare) MappingBsonM(udf UserDefinedField) (firstMatch bson.M, ne
 			{
 				"$match": bson.M{
 					"unmatched": bson.M{"$size": 0},
+				},
+			},
+		}
+	case FilterOperationBlank:
+		firstMatch = bson.M{
+			"$or": bson.A{
+				bson.M{fc.FieldName: bson.M{"$exists": false}},
+				bson.M{fc.FieldName: bson.M{"$in": []interface{}{nil, ""}}},
+			},
+		}
+	case FilterOperationNotBlank:
+		firstMatch = bson.M{
+			"$not": bson.M{
+				"$or": bson.A{
+					bson.M{fc.FieldName: bson.M{"$exists": false}},
+					bson.M{fc.FieldName: bson.M{"$in": []interface{}{nil, ""}}},
 				},
 			},
 		}
@@ -829,4 +856,10 @@ func checkFieldExists(fields []UserDefinedField, fieldName string) bool {
 	}
 
 	return false
+}
+
+type FieldLogical struct {
+	Logical    string         `json:"logical"`
+	Operations []FieldCompare `json:"operations"`
+	Logicals   []FieldLogical `json:"logicals"`
 }
