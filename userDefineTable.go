@@ -355,11 +355,9 @@ func (fc FieldCompare) MappingBsonM(udf UserDefinedField) (firstMatch bson.M, ne
 		}
 	case FilterOperationNotBlank:
 		firstMatch = bson.M{
-			"$not": bson.M{
-				"$or": bson.A{
-					bson.M{fc.FieldName: bson.M{"$exists": false}},
-					bson.M{fc.FieldName: bson.M{"$in": []interface{}{nil, ""}}},
-				},
+			"$nor": bson.A{
+				bson.M{fc.FieldName: bson.M{"$exists": false}},
+				bson.M{fc.FieldName: bson.M{"$in": []interface{}{nil, ""}}},
 			},
 		}
 	}
