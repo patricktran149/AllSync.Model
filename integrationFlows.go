@@ -91,14 +91,15 @@ type IntegrationFlowMapping struct {
 }
 
 type SFTPConfig struct {
-	Host     string `json:"host" bson:"host"`
-	UserName string `json:"userName" bson:"userName"`
-	Password string `json:"password" bson:"password"`
-	Port     int    `json:"port" bson:"port"`
-	Path     string `json:"path" bson:"path"`
-	Ext      string `json:"ext" bson:"ext"`
-	CSVComma string `json:"comma" bson:"comma"`
-	FileName string `json:"fileName" bson:"fileName"`
+	Host      string `json:"host" bson:"host"`
+	UserName  string `json:"userName" bson:"userName"`
+	Password  string `json:"password" bson:"password"`
+	Port      int    `json:"port" bson:"port"`
+	Path      string `json:"path" bson:"path"`
+	Ext       string `json:"ext" bson:"ext"`
+	CSVComma  string `json:"comma" bson:"comma"`
+	FileName  string `json:"fileName" bson:"fileName"`
+	IsOneFile bool   `json:"isOneFile" bson:"isOneFile"`
 }
 
 type SQLConfig struct {
