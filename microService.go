@@ -15,6 +15,7 @@ type MicroServiceResponse struct {
 	UpdatedBy          string             `json:"updatedBy" bson:"updatedBy"`
 	CustomCode         string             `json:"customCode" bson:"customCode"`
 	LanguageCustomCode string             `json:"languageCustomCode" bson:"languageCustomCode"`
+	IsDisable          bool               `json:"isDisable" bson:"isDisable"`
 	CreatedDate        int64              `json:"createdDate" bson:"createdDate"`
 	UpdatedDate        int64              `json:"updatedDate" bson:"updatedDate"`
 }
@@ -30,6 +31,7 @@ type MicroServiceRequest struct {
 	Message            string             `json:"message" bson:"message"`
 	CustomCode         string             `json:"customCode" bson:"customCode"`
 	LanguageCustomCode string             `json:"languageCustomCode" bson:"languageCustomCode"`
+	IsDisable          bool               `json:"isDisable" bson:"isDisable"`
 	CreatedBy          string             `json:"createdBy" bson:"createdBy"`
 	UpdatedBy          string             `json:"updatedBy" bson:"updatedBy"`
 }
@@ -44,5 +46,6 @@ type MicroServiceUpdateRequest struct {
 	Message            string `json:"message" bson:"message"`
 	CustomCode         string `json:"customCode" bson:"customCode"`
 	LanguageCustomCode string `json:"languageCustomCode" bson:"languageCustomCode"`
+	IsDisable          bool   `json:"isDisable" bson:"isDisable"`
 	UpdatedBy          string `json:"updatedBy" bson:"updatedBy"`
 }
