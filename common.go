@@ -41,33 +41,35 @@ const (
 
 type Data struct {
 	//------------------Array-----------------
-	ObjectList           []bson.M               `json:"objectList"`
-	QueueIncomingList    []Queue                `json:"queueIncomingList"`
-	QueueOutgoingList    []Queue                `json:"queueOutgoingList"`
-	QueueSFTPList        []Queue                `json:"queueSFTPList"`
-	QueueWebhookList     []Queue                `json:"queueWebhookList"`
-	UserDefinedTableList []UserDefinedTable     `json:"userDefinedTableList"`
-	ApplicationList      []Application          `json:"applicationList"`
-	IntegrationFlowList  []IntegrationFlow      `json:"integrationFlowList"`
-	QueueStatusList      []ReportQueueStatus    `json:"queueStatusList"`
-	DataMapperList       []DataMapper           `json:"dataMapperList"`
-	TenantList           []Tenant               `json:"tenantList"`
-	MicroServiceList     []MicroServiceResponse `json:"microServiceList"`
+	ObjectList             []bson.M                     `json:"objectList"`
+	QueueIncomingList      []Queue                      `json:"queueIncomingList"`
+	QueueOutgoingList      []Queue                      `json:"queueOutgoingList"`
+	QueueSFTPList          []Queue                      `json:"queueSFTPList"`
+	QueueWebhookList       []Queue                      `json:"queueWebhookList"`
+	UserDefinedTableList   []UserDefinedTable           `json:"userDefinedTableList"`
+	ApplicationList        []Application                `json:"applicationList"`
+	IntegrationFlowList    []IntegrationFlow            `json:"integrationFlowList"`
+	QueueStatusList        []ReportQueueStatus          `json:"queueStatusList"`
+	DataMapperList         []DataMapper                 `json:"dataMapperList"`
+	TenantList             []Tenant                     `json:"tenantList"`
+	MicroServiceList       []MicroServiceResponse       `json:"microServiceList"`
+	MicroServiceStatusList []MicroServiceStatusResponse `json:"microServiceStatusList"`
 
 	//------------------Object-----------------
 
-	Object           bson.M               `json:"object"`
-	QueueIncoming    Queue                `json:"queueIncoming"`
-	QueueOutgoing    Queue                `json:"queueOutgoing"`
-	QueueSFTP        Queue                `json:"queueSFTP"`
-	QueueWebhook     Queue                `json:"queueWebhook"`
-	UserDefinedTable UserDefinedTable     `json:"userDefinedTable"`
-	Application      Application          `json:"application"`
-	DataOut          string               `json:"dataOut"`
-	DataMapper       DataMapper           `json:"dataMapper"`
-	IntegrationFlow  IntegrationFlow      `json:"integrationFlow"`
-	Tenant           Tenant               `json:"tenant"`
-	MicroService     MicroServiceResponse `json:"microService"`
+	Object             bson.M                     `json:"object"`
+	QueueIncoming      Queue                      `json:"queueIncoming"`
+	QueueOutgoing      Queue                      `json:"queueOutgoing"`
+	QueueSFTP          Queue                      `json:"queueSFTP"`
+	QueueWebhook       Queue                      `json:"queueWebhook"`
+	UserDefinedTable   UserDefinedTable           `json:"userDefinedTable"`
+	Application        Application                `json:"application"`
+	DataOut            string                     `json:"dataOut"`
+	DataMapper         DataMapper                 `json:"dataMapper"`
+	IntegrationFlow    IntegrationFlow            `json:"integrationFlow"`
+	Tenant             Tenant                     `json:"tenant"`
+	MicroService       MicroServiceResponse       `json:"microService"`
+	MicroServiceStatus MicroServiceStatusResponse `json:"microServiceStatus"`
 }
 
 type DenominationRequest struct {
