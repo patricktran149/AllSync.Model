@@ -34,6 +34,7 @@ type IntegrationFlowConfig struct {
 	SQL             SQLConfig              `json:"sql" bson:"sql"`
 	Oracle          OracleConfig           `json:"oracle" bson:"oracle"`
 	SAPHana         SAPHanaConfig          `json:"sapHana" bson:"sapHana"`
+	MySQL           MySQLConfig            `json:"mysql" bson:"mysql"`
 	Data            map[string]interface{} `json:"data" bson:"data"`
 	Template        string                 `json:"template" bson:"template"`
 	ResponseMapping string                 `json:"responseMapping" bson:"responseMapping"`
@@ -53,6 +54,7 @@ type IntegrationFlowConfigAfter struct {
 	SQL             SQLConfig              `json:"sql" bson:"sql"`
 	Oracle          OracleConfig           `json:"oracle" bson:"oracle"`
 	SAPHana         SAPHanaConfig          `json:"sapHana" bson:"sapHana"`
+	MySQL           MySQLConfig            `json:"mysql" bson:"mysql"`
 	Data            map[string]interface{} `json:"data" bson:"data"`
 	Template        string                 `json:"template" bson:"template"`
 	ResponseMapping string                 `json:"responseMapping" bson:"responseMapping"`
@@ -124,6 +126,14 @@ type SAPHanaConfig struct {
 	Password     string `json:"password" bson:"password"`
 	DatabaseName string `json:"databaseName" bson:"databaseName"`
 	Schema       string `json:"schema" bson:"schema"`
+	TableName    string `json:"tableName" bson:"tableName"`
+}
+
+type MySQLConfig struct {
+	Server       string `json:"server" bson:"server"`
+	User         string `json:"user" bson:"user"`
+	Password     string `json:"password" bson:"password"`
+	DatabaseName string `json:"databaseName" bson:"databaseName"`
 	TableName    string `json:"tableName" bson:"tableName"`
 }
 
