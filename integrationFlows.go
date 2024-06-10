@@ -151,6 +151,7 @@ type APIConfig struct {
 	Params             map[string]interface{} `json:"params" bson:"params"`
 	Headers            map[string]interface{} `json:"headers" bson:"headers"`
 	Template           string                 `json:"template" bson:"template"`
+	P12                P12                    `json:"p12" bson:"p12"`
 }
 
 type OAuth1 struct {
@@ -185,6 +186,11 @@ type S3 struct {
 	SecretKey  string `json:"secretKey"`
 	Path       string `json:"path"`
 	Ext        string `json:"ext"`
+}
+
+type P12 struct {
+	FilePath string `json:"filePath" bson:"filePath"`
+	Password string `json:"password" bson:"password"`
 }
 
 //addData: BODY, HEADER
