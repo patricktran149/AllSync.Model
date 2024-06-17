@@ -40,6 +40,9 @@ const (
 )
 
 type Data struct {
+	//------------------Unique field-----------------
+	FileURL string `json:"fileURL"`
+
 	//------------------Array-----------------
 	ObjectList             []bson.M                     `json:"objectList"`
 	QueueIncomingList      []Queue                      `json:"queueIncomingList"`
