@@ -79,3 +79,15 @@ type IPResponse struct {
 	IP          string             `json:"ip" bson:"ip"`
 	CreatedDate int64              `json:"createdDate" json:"createdDate"`
 }
+
+type BulkUpdate struct {
+	TableName string            `json:"tableName"`
+	Values    []BulkUpdateValue `json:"updates"`
+	Logical   FieldLogical      `json:"logical"`
+}
+
+type BulkUpdateValue struct {
+	FieldName  string `json:"fieldName"`
+	FieldValue string `json:"fieldValue"`
+	IsExists   bool   `json:"isExists"`
+}
