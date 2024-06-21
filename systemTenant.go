@@ -82,7 +82,7 @@ type IPResponse struct {
 
 type BulkUpdate struct {
 	TableName string            `json:"tableName"`
-	Values    []BulkUpdateValue `json:"updates"`
+	Values    []BulkUpdateValue `json:"values"`
 	Logical   FieldLogical      `json:"logical"`
 }
 
