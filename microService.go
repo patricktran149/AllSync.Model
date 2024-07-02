@@ -39,17 +39,18 @@ type MicroServiceRequest struct {
 }
 
 type MicroServiceUpdateRequest struct {
-	ServiceID          string `json:"serviceID" bson:"serviceID"`
-	Description        string `json:"description" bson:"description"`
-	FileURL            string `json:"fileURL" bson:"fileURL"`
-	VersionID          string `json:"versionID" bson:"versionID"`
-	Status             string `json:"status" bson:"status"`
-	LastRun            int64  `json:"lastRun" bson:"lastRun"`
-	Message            string `json:"message" bson:"message"`
-	CustomCode         string `json:"customCode" bson:"customCode"`
-	LanguageCustomCode string `json:"languageCustomCode" bson:"languageCustomCode"`
-	IsDisable          bool   `json:"isDisable" bson:"isDisable"`
-	UpdatedBy          string `json:"updatedBy" bson:"updatedBy"`
+	ServiceID           string                        `json:"serviceID" bson:"serviceID"`
+	Description         string                        `json:"description" bson:"description"`
+	FileURL             string                        `json:"fileURL" bson:"fileURL"`
+	VersionID           string                        `json:"versionID" bson:"versionID"`
+	Status              string                        `json:"status" bson:"status"`
+	LastRun             int64                         `json:"lastRun" bson:"lastRun"`
+	Message             string                        `json:"message" bson:"message"`
+	CustomCode          string                        `json:"customCode" bson:"customCode"`
+	LanguageCustomCode  string                        `json:"languageCustomCode" bson:"languageCustomCode"`
+	IsDisable           bool                          `json:"isDisable" bson:"isDisable"`
+	ApplicationTypeList []MicroServiceApplicationType `json:"applicationTypeList" bson:"applicationTypeList"`
+	UpdatedBy           string                        `json:"updatedBy" bson:"updatedBy"`
 }
 
 type MicroServiceApplicationType struct {
