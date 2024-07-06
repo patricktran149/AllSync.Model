@@ -105,8 +105,11 @@ type SFTPConfig struct {
 }
 
 type EmailConfig struct {
-	IMAP IMAPConfig `json:"imap" bson:"imap"`
-	SMTP SMTPConfig `json:"smtp" bson:"smtp"`
+	Server    string `json:"server" bson:"server"`
+	User      string `json:"user" bson:"user"`
+	Password  string `json:"password" bson:"password"`
+	EnableSSL bool   `json:"enableSSL" bson:"enableSSL"`
+	IsDraft   bool   `json:"isDraft" bson:"isDraft"`
 }
 
 type SQLConfig struct {
@@ -219,21 +222,6 @@ type HMACConfig struct {
 	Algorithm       HMACAlgorithm `json:"algorithm" bson:"algorithm"`
 	TimestampName   string        `json:"timestampName" bson:"timestampName"`
 	TimestampFormat string        `json:"timestampFormat" bson:"timestampFormat"`
-}
-
-type IMAPConfig struct {
-	Server    string `json:"server" bson:"server"`
-	User      string `json:"user" bson:"user"`
-	Password  string `json:"password" bson:"password"`
-	EnableSSL bool   `json:"enableSSL" bson:"enableSSL"`
-	IsDraft   bool   `json:"isDraft" bson:"isDraft"`
-}
-
-type SMTPConfig struct {
-	Server    string `json:"server" bson:"server"`
-	User      string `json:"user" bson:"user"`
-	Password  string `json:"password" bson:"password"`
-	EnableSSL bool   `json:"enableSSL" bson:"enableSSL"`
 }
 
 func (ifr *IntegrationFlowRequest) Validate() (err error) {
