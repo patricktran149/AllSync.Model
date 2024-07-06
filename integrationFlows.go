@@ -35,6 +35,7 @@ type IntegrationFlowConfig struct {
 	Oracle          OracleConfig           `json:"oracle" bson:"oracle"`
 	SAPHana         SAPHanaConfig          `json:"sapHana" bson:"sapHana"`
 	MySQL           MySQLConfig            `json:"mysql" bson:"mysql"`
+	Email           EmailConfig            `json:"email" bson:"email"`
 	Data            map[string]interface{} `json:"data" bson:"data"`
 	Template        string                 `json:"template" bson:"template"`
 	ResponseMapping string                 `json:"responseMapping" bson:"responseMapping"`
@@ -80,7 +81,6 @@ type IntegrationFlowUpdateRequest struct {
 	Condition   string                   `json:"condition" bson:"condition"`
 	Source      IntegrationFlowConfig    `json:"source" bson:"source"`
 	TargetList  []IntegrationFlowConfig  `json:"targetList" bson:"targetList"`
-	Mode        FlowMode                 `json:"mode" bson:"mode"`
 	Mapping     []map[string]interface{} `json:"mapping" bson:"mapping"`
 	CreatedDate int64                    `json:"createdDate" bson:"createdDate"`
 	UpdatedDate int64                    `json:"updatedDate" bson:"updatedDate"`
