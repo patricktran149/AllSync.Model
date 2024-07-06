@@ -108,6 +108,7 @@ type EmailConfig struct {
 	Server    string `json:"server" bson:"server"`
 	User      string `json:"user" bson:"user"`
 	Password  string `json:"password" bson:"password"`
+	Port      int    `json:"port" bson:"port"`
 	EnableSSL bool   `json:"enableSSL" bson:"enableSSL"`
 	IsDraft   bool   `json:"isDraft" bson:"isDraft"`
 }
