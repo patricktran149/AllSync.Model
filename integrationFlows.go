@@ -226,6 +226,7 @@ type IMAPConfig struct {
 	User      string `json:"user" bson:"user"`
 	Password  string `json:"password" bson:"password"`
 	EnableSSL bool   `json:"enableSSL" bson:"enableSSL"`
+	IsDraft   bool   `json:"isDraft" bson:"isDraft"`
 }
 
 type SMTPConfig struct {
