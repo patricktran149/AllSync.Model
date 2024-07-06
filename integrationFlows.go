@@ -104,6 +104,11 @@ type SFTPConfig struct {
 	IsOneFile bool   `json:"isOneFile" bson:"isOneFile"`
 }
 
+type EmailConfig struct {
+	IMAP IMAPConfig `json:"imap" bson:"imap"`
+	SMTP SMTPConfig `json:"smtp" bson:"smtp"`
+}
+
 type SQLConfig struct {
 	Server       string `json:"server" bson:"server"`
 	User         string `json:"user" bson:"user"`
@@ -216,6 +221,20 @@ type HMACConfig struct {
 	TimestampFormat string        `json:"timestampFormat" bson:"timestampFormat"`
 }
 
+type IMAPConfig struct {
+	Server    string `json:"server" bson:"server"`
+	User      string `json:"user" bson:"user"`
+	Password  string `json:"password" bson:"password"`
+	EnableSSL bool   `json:"enableSSL" bson:"enableSSL"`
+}
+
+type SMTPConfig struct {
+	Server    string `json:"server" bson:"server"`
+	User      string `json:"user" bson:"user"`
+	Password  string `json:"password" bson:"password"`
+	EnableSSL bool   `json:"enableSSL" bson:"enableSSL"`
+}
+
 func (ifr *IntegrationFlowRequest) Validate() (err error) {
 	//if !ifr.Source.Method.isValid() {
 	//	return errors.New(fmt.Sprintf("Method [%s] is invalid ", ifr.Source.Method))
@@ -315,11 +334,22 @@ const (
 	FlowMethodS3      FlowMethod = "S3"
 	FlowMethodSAPHana FlowMethod = "SAP_HANA"
 	FlowMethodMySQL   FlowMethod = "MYSQL"
+	FlowMethodEmail   FlowMethod = "EMAIL"
 )
 
 func (fm *FlowMethod) isValid() bool {
 	*fm = FlowMethod(strings.ToUpper(strings.ReplaceAll(strings.Trim(string(*fm), " "), "_", "")))
-	if !IsItemExistsInArray(*fm, []FlowMethod{FlowMethodAPI, FlowMethodSFTP, FlowMethodQueue, FlowMethodS3, FlowMethodSQL, FlowMethodOracle, FlowMethodSAPHana, FlowMethodMySQL}) {
+	if !IsItemExistsInArray(*fm, []FlowMethod{
+		FlowMethodAPI,
+		FlowMethodSFTP,
+		FlowMethodQueue,
+		FlowMethodS3,
+		FlowMethodSQL,
+		FlowMethodOracle,
+		FlowMethodSAPHana,
+		FlowMethodMySQL,
+		FlowMethodEmail,
+	}) {
 		return false
 	}
 
