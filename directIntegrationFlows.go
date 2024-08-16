@@ -31,11 +31,11 @@ type DirectIntegrationFlowUpdateRequest struct {
 }
 
 type FlowSequence struct {
-	Sequence         int                    `json:"sequence" bson:"sequence"`
-	IsActive         bool                   `json:"isActive" bson:"isActive"`
-	Code             string                 `json:"code" bson:"code"`
-	SuccessCondition string                 `json:"successCondition" bson:"successCondition"`
-	Connection       FlowSequenceConnection `json:"connection" bson:"connection"`
+	Sequence         int                     `json:"sequence" bson:"sequence"`
+	IsActive         bool                    `json:"isActive" bson:"isActive"`
+	Code             string                  `json:"code" bson:"code"`
+	SuccessCondition string                  `json:"successCondition" bson:"successCondition"`
+	Connection       *FlowSequenceConnection `json:"connection" bson:"connection"`
 }
 
 type FlowSequenceConnection struct {
@@ -45,7 +45,7 @@ type FlowSequenceConnection struct {
 	Sleep          int64                    `json:"sleep" bson:"sleep"`
 	API            *ConnectionAPIConfig     `json:"api" bson:"api"`
 	SQL            *ConnectionSQLConfig     `json:"sql" bson:"sql"`
-	MySQL          *ConnectionMySQLConfig   `json:"mySQL" json:"mySQL"`
+	MySQL          *ConnectionMySQLConfig   `json:"mysql" json:"mysql"`
 	Oracle         *ConnectionOracleConfig  `json:"oracle" bson:"oracle"`
 	SAPHana        *ConnectionSAPHanaConfig `json:"sapHana" bson:"sapHana"`
 	SFTP           *ConnectionSFTPConfig    `json:"sftp" bson:"sftp"`
@@ -134,7 +134,7 @@ type ConnectionType string
 const (
 	ConnectionTypeAPI     ConnectionType = "API"
 	ConnectionTypeSQL     ConnectionType = "SQL"
-	ConnectionTypeMySQL   ConnectionType = "MY_SQL"
+	ConnectionTypeMySQL   ConnectionType = "MYSQL"
 	ConnectionTypeOracle  ConnectionType = "ORACLE"
 	ConnectionTypeSAPHana ConnectionType = "SAP_HANA"
 	ConnectionTypeSFTP    ConnectionType = "SFTP"
