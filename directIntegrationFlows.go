@@ -1,6 +1,7 @@
 package Model
 
 import (
+	"errors"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"strings"
 )
@@ -140,6 +141,7 @@ const (
 	ConnectionTypeSFTP    ConnectionType = "SFTP"
 	ConnectionTypeS3      ConnectionType = "S3"
 	ConnectionTypeEmail   ConnectionType = "EMAIL"
+	ConnectionTypeWebhook ConnectionType = "WEBHOOK"
 )
 
 func (t *ConnectionType) isValidType() bool {
@@ -153,6 +155,7 @@ func (t *ConnectionType) isValidType() bool {
 		ConnectionTypeSFTP,
 		ConnectionTypeS3,
 		ConnectionTypeEmail,
+		ConnectionTypeWebhook,
 	}) {
 		return false
 	}
@@ -179,4 +182,14 @@ func (t *APIAuthenticationType) isValidType() bool {
 	}
 
 	return true
+}
+
+func (difReq *DirectIntegrationFlowRequest) Validate() (err error) {
+	for _, flow := range difReq.Flows {
+		if !flow.Connection.Type.isValidType() {
+			return errors.New("Validate type ERROR - " + err.Error())
+		}
+	}
+
+	return
 }
