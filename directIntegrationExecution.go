@@ -7,20 +7,22 @@ import (
 type DirectIntegrationExecution struct {
 	ID            primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
 	FlowID        primitive.ObjectID `json:"flowID" bson:"flowID"`
+	Status        string             `json:"status" bson:"status"`
 	ExecutionDate int64              `json:"executionDate" bson:"executionDate"`
 	Details       []ExecutionDetail  `json:"details" bson:"details"`
 }
 
 type DirectIntegrationExecutionRequest struct {
 	FlowID        primitive.ObjectID `json:"flowID" bson:"flowID"`
+	Status        string             `json:"status" bson:"status"`
 	ExecutionDate int64              `json:"executionDate" bson:"executionDate"`
 	Details       []ExecutionDetail  `json:"details" bson:"details"`
 }
 
 type DirectIntegrationExecutionUpdateRequest struct {
-	FlowID        primitive.ObjectID `json:"flowID" bson:"flowID"`
-	ExecutionDate int64              `json:"executionDate" bson:"executionDate"`
-	Details       []ExecutionDetail  `json:"details" bson:"details"`
+	Status        string            `json:"status" bson:"status"`
+	ExecutionDate int64             `json:"executionDate" bson:"executionDate"`
+	Details       []ExecutionDetail `json:"details" bson:"details"`
 }
 
 type ExecutionDetail struct {
