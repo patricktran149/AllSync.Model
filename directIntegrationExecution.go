@@ -46,3 +46,11 @@ type DirectIntegrationExecutionLog struct {
 	LogMessage     string             `json:"logMessage" bson:"logMessage"`
 	LogDate        int64              `json:"logDate" bson:"logDate"`
 }
+
+type DirectIntegrationExecutionLogRequest struct {
+	FlowID         primitive.ObjectID `json:"flowID" bson:"flowID"`
+	ExecutionID    primitive.ObjectID `json:"executionID" bson:"executionID"`
+	ConnectionName string             `json:"connectionName" bson:"connectionName"`
+	Sequence       int                `json:"sequence" bson:"sequence"`
+	LogMessage     string             `json:"logMessage" bson:"logMessage"`
+}
