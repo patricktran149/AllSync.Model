@@ -31,6 +31,18 @@ type DirectIntegrationFlowUpdateRequest struct {
 	UpdatedBy string         `json:"updatedBy" bson:"updatedBy"`
 }
 
+type DirectIntegrationVersion struct {
+	ID          primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
+	FlowID      primitive.ObjectID `json:"flowID" bson:"flowID"`
+	FlowName    string             `json:"flowName" bson:"flowName"`
+	IsActive    bool               `json:"isActive" bson:"isActive"`
+	Flows       []FlowSequence     `json:"flows" bson:"flows"`
+	CreatedDate int64              `json:"createdDate" bson:"createdDate"`
+	CreatedBy   string             `json:"createdBy" bson:"createdBy"`
+	UpdatedDate int64              `json:"updatedDate" bson:"updatedDate"`
+	UpdatedBy   string             `json:"updatedBy" bson:"updatedBy"`
+}
+
 type FlowSequence struct {
 	Sequence         int                     `json:"sequence" bson:"sequence"`
 	IsActive         bool                    `json:"isActive" bson:"isActive"`
