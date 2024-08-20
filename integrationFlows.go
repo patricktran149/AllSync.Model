@@ -25,6 +25,7 @@ type IntegrationFlow struct {
 type IntegrationFlowConfig struct {
 	ApplicationID   string                 `json:"applicationID" bson:"applicationID"`
 	Condition       string                 `json:"condition" bson:"condition"`
+	Name            string                 `json:"name" bson:"name"`
 	Mode            FlowMode               `json:"mode" bson:"mode"`
 	Method          FlowMethod             `json:"method" bson:"method"`
 	S3              S3                     `json:"s3" bson:"s3"`
@@ -46,6 +47,7 @@ type IntegrationFlowConfig struct {
 type IntegrationFlowConfigAfter struct {
 	ApplicationID   string                 `json:"applicationID" bson:"applicationID"`
 	Condition       string                 `json:"condition" bson:"condition"`
+	Name            string                 `json:"name" bson:"name"`
 	Mode            FlowMode               `json:"mode" bson:"mode"`
 	Method          FlowMethod             `json:"method" bson:"method"`
 	S3              S3                     `json:"s3" bson:"s3"`
