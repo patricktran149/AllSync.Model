@@ -13,7 +13,7 @@ type SystemUser struct {
 	Email             string                    `json:"email" bson:"email"`
 	Password          string                    `json:"password,omitempty" bson:"password,omitempty"`
 	Token             Token                     `json:"token" bson:"token"`
-	TokenList         []Token                   `json:"tokenList" bson:"tokenList"`
+	TokenList         *[]Token                  `json:"tokenList" bson:"tokenList"`
 	IsActive          bool                      `json:"isActive" bson:"isActive"`
 	IsAdmin           bool                      `json:"isAdmin" bson:"isAdmin"`
 	OTP               Token                     `json:"otp"  bson:"otp"`
