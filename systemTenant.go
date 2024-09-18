@@ -15,6 +15,7 @@ type Tenant struct {
 	AdminPassword  string             `json:"adminPassword,omitempty" bson:"adminPassword,omitempty"`
 	SMTP           SMTP               `json:"smtp" bson:"smtp"`
 	RateLimit      int                `json:"rateLimit" bson:"rateLimit"`
+	OrganizationID string             `json:"organizationID" bson:"organizationID"`
 	CreatedDate    int64              `json:"createdDate" bson:"createdDate"`
 	CreatedBy      string             `json:"createdBy" bson:"createdBy"`
 	UpdatedDate    int64              `json:"updatedDate" bson:"updatedDate"`
@@ -30,6 +31,7 @@ type TenantRequest struct {
 	AdminEmail     string `json:"adminEmail" bson:"adminEmail"`
 	AdminPassword  string `json:"adminPassword" bson:"adminPassword"`
 	SMTP           SMTP   `json:"smtp" bson:"smtp"`
+	OrganizationID string `json:"organizationID" bson:"organizationID"`
 	CreatedBy      string `json:"createdBy" bson:"createdBy"`
 	UpdatedBy      string `json:"updatedBy" bson:"updatedBy"`
 }
@@ -41,6 +43,7 @@ type TenantUpdateRequest struct {
 	IsActive       bool   `json:"isActive" bson:"isActive"`
 	DatabaseServer string `json:"databaseServer" bson:"databaseServer"`
 	SMTP           SMTP   `json:"smtp" bson:"smtp"`
+	OrganizationID string `json:"organizationID" bson:"organizationID"`
 	UpdatedBy      string `json:"updatedBy" bson:"updatedBy"`
 }
 
