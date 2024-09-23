@@ -85,3 +85,8 @@ type DenominationRequest struct {
 	DenominationList []float64 `json:"denominationList"`
 	Payment          float64   `json:"payment"`
 }
+
+type CollectionPipeline struct {
+	Collection string `json:"collection"`
+	Pipeline   string `json:"pipeline"`
+}
