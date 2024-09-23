@@ -1,6 +1,8 @@
 package Model
 
-import "go.mongodb.org/mongo-driver/bson"
+import (
+	"go.mongodb.org/mongo-driver/bson"
+)
 
 type AllSyncConfig struct {
 	SystemAPIURL    string
@@ -89,4 +91,11 @@ type DenominationRequest struct {
 type CollectionPipeline struct {
 	Collection string `json:"collection"`
 	Pipeline   string `json:"pipeline"`
+}
+
+type MongoExecuteQuery struct {
+	CollectionPipeline
+	LastID string `json:"lastID"`
+	Sort   Sort   `json:"sort"`
+	Limit  int    `json:"limit"`
 }
