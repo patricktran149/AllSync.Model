@@ -62,6 +62,13 @@ type ApplicationUpdateRequest struct {
 	ImmediateRetryTimes int                                     `json:"immediateRetryTimes" bson:"immediateRetryTimes"`
 	OutgoingAPISleep    int                                     `json:"outgoingAPISleep" bson:"outgoingAPISleep"`
 	AutoRetry           bool                                    `json:"autoRetry" bson:"autoRetry"`
+	TimeOut             int                                     `json:"timeOut" bson:"timeOut"`
+	EnableOAuth2        bool                                    `json:"enableOAuth2" bson:"enableOAuth2"`
+	AuthorizeURL        string                                  `json:"authorizeURL" bson:"authorizeURL"`
+	GetTokenAPI         APIConfig                               `json:"getTokenAPI" bson:"getTokenAPI"`
+	GetTokenMapping     string                                  `json:"getTokenMapping" bson:"getTokenMapping"`
+	FreshTokenAPI       APIConfig                               `json:"freshTokenAPI" bson:"freshTokenAPI"`
+	FreshTokenMapping   string                                  `json:"freshTokenMapping" bson:"freshTokenMapping"`
 	UpdatedBy           string                                  `json:"updatedBy" bson:"updatedBy"`
 	UpdatedDate         int64                                   `json:"updatedDate" bson:"updatedDate"`
 	Configurations      []ApplicationConfigurationUpdateRequest `json:"configurations,omitempty" bson:"configurations,omitempty"`
