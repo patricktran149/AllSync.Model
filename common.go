@@ -62,6 +62,7 @@ type Data struct {
 	DirectIntegrationFlowList         []DirectIntegrationFlow         `json:"directIntegrationFlowList"`
 	DirectIntegrationExecutionList    []DirectIntegrationExecution    `json:"directIntegrationExecutionList"`
 	DirectIntegrationExecutionLogList []DirectIntegrationExecutionLog `json:"directIntegrationExecutionLogList"`
+	OAuth2TokenList                   []OAuth2Token                   `json:"oAuth2TokenList"`
 
 	//------------------Object-----------------
 
@@ -81,6 +82,7 @@ type Data struct {
 	DirectIntegrationFlow         DirectIntegrationFlow         `json:"directIntegrationFlow"`
 	DirectIntegrationExecution    DirectIntegrationExecution    `json:"directIntegrationExecution"`
 	DirectIntegrationExecutionLog DirectIntegrationExecutionLog `json:"directIntegrationExecutionLog"`
+	OAuth2Token                   OAuth2Token                   `json:"oAuth2Token"`
 }
 
 type DenominationRequest struct {
