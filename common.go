@@ -83,6 +83,7 @@ type Data struct {
 	DirectIntegrationExecution    DirectIntegrationExecution    `json:"directIntegrationExecution"`
 	DirectIntegrationExecutionLog DirectIntegrationExecutionLog `json:"directIntegrationExecutionLog"`
 	OAuth2Token                   OAuth2Token                   `json:"oAuth2Token"`
+	ApplicationConfiguration      ApplicationConfiguration      `json:"configuration"`
 }
 
 type DenominationRequest struct {
