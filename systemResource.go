@@ -27,7 +27,7 @@ type SystemResourceRequest struct {
 }
 
 type SystemService struct {
-	Name               string `json:"Name" bson:"Name"`
+	Name               string `json:"name" bson:"name"`
 	PID                string `json:"pid" bson:"pid"`
 	CPUUsagePercent    string `json:"cpuUsagePercent" bson:"cpuUsagePercent"`
 	MemoryUsagePercent string `json:"memoryUsagePercent" bson:"memoryUsagePercent"`
