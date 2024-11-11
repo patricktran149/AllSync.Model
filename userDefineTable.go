@@ -29,7 +29,7 @@ type UserDefinedTable struct {
 	LinkCondition   string                   `json:"linkCondition" bson:"linkCondition"`
 	EnableLog       bool                     `json:"enableLog" bson:"enableLog"`
 	RecordLock      RecordLock               `json:"recordLock" bson:"recordLock"`
-	RecordLifeTime  int64                    `json:"recordLifeTime" bson:"recordLifeTime"`
+	RecordLifeTime  int32                    `json:"recordLifeTime" bson:"recordLifeTime"`
 	CreatedDate     int64                    `json:"createdDate" bson:"createdDate"`
 	CreatedBy       string                   `json:"createdBy" bson:"createdBy"`
 	UpdatedDate     int64                    `json:"updatedDate" bson:"updatedDate"`
@@ -58,7 +58,7 @@ type UserDefinedTableRequest struct {
 	LinkCondition   string                   `json:"linkCondition" bson:"linkCondition"`
 	EnableLog       bool                     `json:"enableLog" bson:"enableLog"`
 	RecordLock      RecordLock               `json:"recordLock" bson:"recordLock"`
-	RecordLifeTime  int64                    `json:"recordLifeTime" bson:"recordLifeTime"`
+	RecordLifeTime  int32                    `json:"recordLifeTime" bson:"recordLifeTime"`
 	CreatedBy       string                   `json:"createdBy" bson:"createdBy"`
 	UpdatedBy       string                   `json:"updatedBy" bson:"updatedBy"`
 	Buttons         []UserDefinedTableButton `json:"buttons" bson:"buttons"`
@@ -82,7 +82,7 @@ type UserDefinedTableUpdateRequest struct {
 	LinkCondition   string                   `json:"linkCondition" bson:"linkCondition"`
 	EnableLog       bool                     `json:"enableLog" bson:"enableLog"`
 	RecordLock      RecordLock               `json:"recordLock" bson:"recordLock"`
-	RecordLifeTime  int64                    `json:"recordLifeTime" bson:"recordLifeTime"`
+	RecordLifeTime  int32                    `json:"recordLifeTime" bson:"recordLifeTime"`
 	Buttons         []UserDefinedTableButton `json:"buttons" bson:"buttons"`
 	Filters         []UserDefinedTableFilter `json:"filters" bson:"filters"`
 	DataFlows       []DataFlow               `json:"dataFlows" bson:"dataFlows"`

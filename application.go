@@ -24,8 +24,8 @@ type Application struct {
 	FreshTokenAPI        APIConfig                  `json:"freshTokenAPI" bson:"freshTokenAPI"`
 	FreshTokenMapping    string                     `json:"freshTokenMapping" bson:"freshTokenMapping"`
 	OAuthTokenEmail      string                     `json:"oAuthTokenEmail" bson:"oAuthTokenEmail"`
-	QueueLifeTime        int64                      `json:"queueLifeTime" bson:"queueLifeTime"`
-	QueueArchiveLifeTime int64                      `json:"queueArchiveLifeTime" bson:"queueArchiveLifeTime"`
+	QueueLifeTime        int32                      `json:"queueLifeTime" bson:"queueLifeTime"`
+	QueueArchiveLifeTime int32                      `json:"queueArchiveLifeTime" bson:"queueArchiveLifeTime"`
 	CreatedDate          int64                      `json:"createdDate" bson:"createdDate"`
 	CreatedBy            string                     `json:"createdBy" bson:"createdBy"`
 	UpdatedDate          int64                      `json:"updatedDate" bson:"updatedDate"`
@@ -50,8 +50,8 @@ type ApplicationRequest struct {
 	FreshTokenAPI        APIConfig                  `json:"freshTokenAPI" bson:"freshTokenAPI"`
 	FreshTokenMapping    string                     `json:"freshTokenMapping" bson:"freshTokenMapping"`
 	OAuthTokenEmail      string                     `json:"oAuthTokenEmail" bson:"oAuthTokenEmail"`
-	QueueLifeTime        int64                      `json:"queueLifeTime" bson:"queueLifeTime"`
-	QueueArchiveLifeTime int64                      `json:"queueArchiveLifeTime" bson:"queueArchiveLifeTime"`
+	QueueLifeTime        int32                      `json:"queueLifeTime" bson:"queueLifeTime"`
+	QueueArchiveLifeTime int32                      `json:"queueArchiveLifeTime" bson:"queueArchiveLifeTime"`
 	CreatedDate          int64                      `json:"createdDate" bson:"createdDate"`
 	CreatedBy            string                     `json:"createdBy" bson:"createdBy"`
 	UpdatedDate          int64                      `json:"updatedDate" bson:"updatedDate"`
@@ -76,8 +76,8 @@ type ApplicationUpdateRequest struct {
 	FreshTokenAPI        APIConfig                               `json:"freshTokenAPI" bson:"freshTokenAPI"`
 	FreshTokenMapping    string                                  `json:"freshTokenMapping" bson:"freshTokenMapping"`
 	OAuthTokenEmail      string                                  `json:"oAuthTokenEmail" bson:"oAuthTokenEmail"`
-	QueueLifeTime        int64                                   `json:"queueLifeTime" bson:"queueLifeTime"`
-	QueueArchiveLifeTime int64                                   `json:"queueArchiveLifeTime" bson:"queueArchiveLifeTime"`
+	QueueLifeTime        int32                                   `json:"queueLifeTime" bson:"queueLifeTime"`
+	QueueArchiveLifeTime int32                                   `json:"queueArchiveLifeTime" bson:"queueArchiveLifeTime"`
 	UpdatedBy            string                                  `json:"updatedBy" bson:"updatedBy"`
 	UpdatedDate          int64                                   `json:"updatedDate" bson:"updatedDate"`
 	Configurations       []ApplicationConfigurationUpdateRequest `json:"configurations,omitempty" bson:"configurations,omitempty"`
