@@ -9,70 +9,79 @@ import (
 )
 
 type Application struct {
-	ID                  primitive.ObjectID         `json:"_id,omitempty" bson:"_id,omitempty"`
-	ApplicationID       string                     `json:"applicationID" bson:"applicationID"`
-	ApplicationName     string                     `json:"applicationName" bson:"applicationName"`
-	Token               Token                      `json:"token" bson:"token"`
-	ImmediateRetryTimes int                        `json:"immediateRetryTimes" bson:"immediateRetryTimes"`
-	OutgoingAPISleep    int                        `json:"outgoingAPISleep" bson:"outgoingAPISleep"`
-	AutoRetry           bool                       `json:"autoRetry" bson:"autoRetry"`
-	TimeOut             int                        `json:"timeOut" bson:"timeOut"`
-	EnableOAuth2        bool                       `json:"enableOAuth2" bson:"enableOAuth2"`
-	AuthorizeURL        string                     `json:"authorizeURL" bson:"authorizeURL"`
-	GetTokenAPI         APIConfig                  `json:"getTokenAPI" bson:"getTokenAPI"`
-	GetTokenMapping     string                     `json:"getTokenMapping" bson:"getTokenMapping"`
-	FreshTokenAPI       APIConfig                  `json:"freshTokenAPI" bson:"freshTokenAPI"`
-	FreshTokenMapping   string                     `json:"freshTokenMapping" bson:"freshTokenMapping"`
-	CreatedDate         int64                      `json:"createdDate" bson:"createdDate"`
-	CreatedBy           string                     `json:"createdBy" bson:"createdBy"`
-	UpdatedDate         int64                      `json:"updatedDate" bson:"updatedDate"`
-	UpdatedBy           string                     `json:"updatedBy" bson:"updatedBy"`
-	Configurations      []ApplicationConfiguration `json:"configurations" bson:"configurations"`
-	Mappings            []ApplicationMapping       `json:"mappings" bson:"mappings"`
+	ID                   primitive.ObjectID         `json:"_id,omitempty" bson:"_id,omitempty"`
+	ApplicationID        string                     `json:"applicationID" bson:"applicationID"`
+	ApplicationName      string                     `json:"applicationName" bson:"applicationName"`
+	Token                Token                      `json:"token" bson:"token"`
+	ImmediateRetryTimes  int                        `json:"immediateRetryTimes" bson:"immediateRetryTimes"`
+	OutgoingAPISleep     int                        `json:"outgoingAPISleep" bson:"outgoingAPISleep"`
+	AutoRetry            bool                       `json:"autoRetry" bson:"autoRetry"`
+	TimeOut              int                        `json:"timeOut" bson:"timeOut"`
+	EnableOAuth2         bool                       `json:"enableOAuth2" bson:"enableOAuth2"`
+	AuthorizeURL         string                     `json:"authorizeURL" bson:"authorizeURL"`
+	GetTokenAPI          APIConfig                  `json:"getTokenAPI" bson:"getTokenAPI"`
+	GetTokenMapping      string                     `json:"getTokenMapping" bson:"getTokenMapping"`
+	FreshTokenAPI        APIConfig                  `json:"freshTokenAPI" bson:"freshTokenAPI"`
+	FreshTokenMapping    string                     `json:"freshTokenMapping" bson:"freshTokenMapping"`
+	OAuthTokenEmail      string                     `json:"oAuthTokenEmail" bson:"oAuthTokenEmail"`
+	QueueLifeTime        int64                      `json:"queueLifeTime" bson:"queueLifeTime"`
+	QueueArchiveLifeTime int64                      `json:"queueArchiveLifeTime" bson:"queueArchiveLifeTime"`
+	CreatedDate          int64                      `json:"createdDate" bson:"createdDate"`
+	CreatedBy            string                     `json:"createdBy" bson:"createdBy"`
+	UpdatedDate          int64                      `json:"updatedDate" bson:"updatedDate"`
+	UpdatedBy            string                     `json:"updatedBy" bson:"updatedBy"`
+	Configurations       []ApplicationConfiguration `json:"configurations" bson:"configurations"`
+	Mappings             []ApplicationMapping       `json:"mappings" bson:"mappings"`
 }
 
 type ApplicationRequest struct {
-	ID                  primitive.ObjectID         `json:"_id,omitempty" bson:"_id,omitempty"`
-	ApplicationID       string                     `json:"applicationID" bson:"applicationID"`
-	ApplicationName     string                     `json:"applicationName" bson:"applicationName"`
-	Token               Token                      `json:"token" bson:"token"`
-	ImmediateRetryTimes int                        `json:"immediateRetryTimes" bson:"immediateRetryTimes"`
-	OutgoingAPISleep    int                        `json:"outgoingAPISleep" bson:"outgoingAPISleep"`
-	AutoRetry           bool                       `json:"autoRetry" bson:"autoRetry"`
-	TimeOut             int                        `json:"timeOut" bson:"timeOut"`
-	EnableOAuth2        bool                       `json:"enableOAuth2" bson:"enableOAuth2"`
-	AuthorizeURL        string                     `json:"authorizeURL" bson:"authorizeURL"`
-	GetTokenAPI         APIConfig                  `json:"getTokenAPI" bson:"getTokenAPI"`
-	GetTokenMapping     string                     `json:"getTokenMapping" bson:"getTokenMapping"`
-	FreshTokenAPI       APIConfig                  `json:"freshTokenAPI" bson:"freshTokenAPI"`
-	FreshTokenMapping   string                     `json:"freshTokenMapping" bson:"freshTokenMapping"`
-	CreatedDate         int64                      `json:"createdDate" bson:"createdDate"`
-	CreatedBy           string                     `json:"createdBy" bson:"createdBy"`
-	UpdatedDate         int64                      `json:"updatedDate" bson:"updatedDate"`
-	UpdatedBy           string                     `json:"updatedBy" bson:"updatedBy"`
-	Configurations      []ApplicationConfiguration `json:"configurations,omitempty" bson:"configurations,omitempty"`
-	Mappings            []ApplicationMapping       `json:"mappings" bson:"mappings"`
+	ID                   primitive.ObjectID         `json:"_id,omitempty" bson:"_id,omitempty"`
+	ApplicationID        string                     `json:"applicationID" bson:"applicationID"`
+	ApplicationName      string                     `json:"applicationName" bson:"applicationName"`
+	Token                Token                      `json:"token" bson:"token"`
+	ImmediateRetryTimes  int                        `json:"immediateRetryTimes" bson:"immediateRetryTimes"`
+	OutgoingAPISleep     int                        `json:"outgoingAPISleep" bson:"outgoingAPISleep"`
+	AutoRetry            bool                       `json:"autoRetry" bson:"autoRetry"`
+	TimeOut              int                        `json:"timeOut" bson:"timeOut"`
+	EnableOAuth2         bool                       `json:"enableOAuth2" bson:"enableOAuth2"`
+	AuthorizeURL         string                     `json:"authorizeURL" bson:"authorizeURL"`
+	GetTokenAPI          APIConfig                  `json:"getTokenAPI" bson:"getTokenAPI"`
+	GetTokenMapping      string                     `json:"getTokenMapping" bson:"getTokenMapping"`
+	FreshTokenAPI        APIConfig                  `json:"freshTokenAPI" bson:"freshTokenAPI"`
+	FreshTokenMapping    string                     `json:"freshTokenMapping" bson:"freshTokenMapping"`
+	OAuthTokenEmail      string                     `json:"oAuthTokenEmail" bson:"oAuthTokenEmail"`
+	QueueLifeTime        int64                      `json:"queueLifeTime" bson:"queueLifeTime"`
+	QueueArchiveLifeTime int64                      `json:"queueArchiveLifeTime" bson:"queueArchiveLifeTime"`
+	CreatedDate          int64                      `json:"createdDate" bson:"createdDate"`
+	CreatedBy            string                     `json:"createdBy" bson:"createdBy"`
+	UpdatedDate          int64                      `json:"updatedDate" bson:"updatedDate"`
+	UpdatedBy            string                     `json:"updatedBy" bson:"updatedBy"`
+	Configurations       []ApplicationConfiguration `json:"configurations,omitempty" bson:"configurations,omitempty"`
+	Mappings             []ApplicationMapping       `json:"mappings" bson:"mappings"`
 }
 
 type ApplicationUpdateRequest struct {
-	ID                  primitive.ObjectID                      `json:"_id,omitempty" bson:"_id,omitempty"`
-	ApplicationID       string                                  `json:"applicationID" bson:"applicationID"`
-	ApplicationName     string                                  `json:"applicationName" bson:"applicationName"`
-	Token               Token                                   `json:"token" bson:"token"`
-	ImmediateRetryTimes int                                     `json:"immediateRetryTimes" bson:"immediateRetryTimes"`
-	OutgoingAPISleep    int                                     `json:"outgoingAPISleep" bson:"outgoingAPISleep"`
-	AutoRetry           bool                                    `json:"autoRetry" bson:"autoRetry"`
-	TimeOut             int                                     `json:"timeOut" bson:"timeOut"`
-	EnableOAuth2        bool                                    `json:"enableOAuth2" bson:"enableOAuth2"`
-	AuthorizeURL        string                                  `json:"authorizeURL" bson:"authorizeURL"`
-	GetTokenAPI         APIConfig                               `json:"getTokenAPI" bson:"getTokenAPI"`
-	GetTokenMapping     string                                  `json:"getTokenMapping" bson:"getTokenMapping"`
-	FreshTokenAPI       APIConfig                               `json:"freshTokenAPI" bson:"freshTokenAPI"`
-	FreshTokenMapping   string                                  `json:"freshTokenMapping" bson:"freshTokenMapping"`
-	UpdatedBy           string                                  `json:"updatedBy" bson:"updatedBy"`
-	UpdatedDate         int64                                   `json:"updatedDate" bson:"updatedDate"`
-	Configurations      []ApplicationConfigurationUpdateRequest `json:"configurations,omitempty" bson:"configurations,omitempty"`
-	Mappings            []ApplicationMapping                    `json:"mappings" bson:"mappings"`
+	ID                   primitive.ObjectID                      `json:"_id,omitempty" bson:"_id,omitempty"`
+	ApplicationID        string                                  `json:"applicationID" bson:"applicationID"`
+	ApplicationName      string                                  `json:"applicationName" bson:"applicationName"`
+	Token                Token                                   `json:"token" bson:"token"`
+	ImmediateRetryTimes  int                                     `json:"immediateRetryTimes" bson:"immediateRetryTimes"`
+	OutgoingAPISleep     int                                     `json:"outgoingAPISleep" bson:"outgoingAPISleep"`
+	AutoRetry            bool                                    `json:"autoRetry" bson:"autoRetry"`
+	TimeOut              int                                     `json:"timeOut" bson:"timeOut"`
+	EnableOAuth2         bool                                    `json:"enableOAuth2" bson:"enableOAuth2"`
+	AuthorizeURL         string                                  `json:"authorizeURL" bson:"authorizeURL"`
+	GetTokenAPI          APIConfig                               `json:"getTokenAPI" bson:"getTokenAPI"`
+	GetTokenMapping      string                                  `json:"getTokenMapping" bson:"getTokenMapping"`
+	FreshTokenAPI        APIConfig                               `json:"freshTokenAPI" bson:"freshTokenAPI"`
+	FreshTokenMapping    string                                  `json:"freshTokenMapping" bson:"freshTokenMapping"`
+	OAuthTokenEmail      string                                  `json:"oAuthTokenEmail" bson:"oAuthTokenEmail"`
+	QueueLifeTime        int64                                   `json:"queueLifeTime" bson:"queueLifeTime"`
+	QueueArchiveLifeTime int64                                   `json:"queueArchiveLifeTime" bson:"queueArchiveLifeTime"`
+	UpdatedBy            string                                  `json:"updatedBy" bson:"updatedBy"`
+	UpdatedDate          int64                                   `json:"updatedDate" bson:"updatedDate"`
+	Configurations       []ApplicationConfigurationUpdateRequest `json:"configurations,omitempty" bson:"configurations,omitempty"`
+	Mappings             []ApplicationMapping                    `json:"mappings" bson:"mappings"`
 }
 
 type ApplicationMapping struct {
@@ -223,90 +232,3 @@ func (app *Application) GetConfig(id string) (appConfig ApplicationConfiguration
 	}
 	return appConfig
 }
-
-/*func (object ApplicationObject) MakeRequest(data interface{}) ( err error) {
-	var (
-		hook       = object.WebHook
-		k          *kazaam.Kazaam
-		specConfig string
-		client     = &http.Client{}
-		query      = url.Values{}
-		req        *http.Request
-		res        *http.Response
-		sendData, responseData string
-	)
-
-	var bt []byte
-
-	rawData := JSONToString(data)
-
-	specConfig = JSONToString(object.Mapping.Out)
-
-	k, err = kazaam.NewKazaam(specConfig)
-	if err != nil {
-		err = errors.New("New Kazaam ERROR - " + err.Error())
-		return
-	}
-
-	sendData, err = k.TransformJSONStringToString(rawData)
-	if err != nil {
-		err = errors.New("Transform ERROR - " + err.Error())
-		return
-	}
-
-	if hook.Method != http.MethodGet {
-		bt = []byte(sendData)
-	}
-
-	req, err = http.NewRequest(hook.Method, hook.URL, bytes.NewBuffer(bt))
-	if err != nil {
-		err = errors.New("Make request ERROR - " + err.Error())
-		return
-	}
-
-	// Add Params
-	for k, v := range hook.Params {
-		query.Add(k, fmt.Sprintf("%v", v))
-	}
-	req.URL.RawQuery = query.Encode()
-
-	req.Headers.Set("Content-Type", "application/json")
-
-	// For authorization header
-	switch hook.AuthenticationType {
-	case AuthenticationTypeBearer:
-		{
-			req.Headers.Set("Authorization", fmt.Sprintf("Bearer %s", hook.Token))
-			break
-		}
-	case AuthenticationTypeBasic:
-		{
-			auth := base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s", hook.BasicAuth.UserName, hook.BasicAuth.Password)))
-			req.Headers.Set("Authorization", fmt.Sprintf("Basic %s", auth))
-			break
-		}
-	default:
-		break
-	}
-
-	// For User input header
-	for k, v := range hook.Headers {
-		if hook.AuthenticationType != AuthenticationTypeNone && k == "Authorization" {
-			continue
-		}
-		req.Headers.Set(k, fmt.Sprintf("%v", v))
-	}
-
-	res, err = client.Do(req)
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-	responseData = string(body)
-	if res.StatusCode != http.StatusOK && res.StatusCode != http.StatusCreated {
-		if hook.IsMandatory {
-			err = errors.New(fmt.Sprintf("Request ERROR - Status [%v] - Code [%v] - Response [%s]", res.Status, res.StatusCode, string(body)))
-			return
-		}
-	}
-
-	return
-}*/

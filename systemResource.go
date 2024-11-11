@@ -1,6 +1,9 @@
 package Model
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"go.mongodb.org/mongo-driver/bson/primitive"
+	"time"
+)
 
 type SystemResource struct {
 	ID                      primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
@@ -12,6 +15,7 @@ type SystemResource struct {
 	TotalMemoryUsage        string             `json:"totalMemoryUsage" bson:"totalMemoryUsage"`
 	TotalMemoryUsagePercent string             `json:"totalMemoryUsagePercent" bson:"totalMemoryUsagePercent"`
 	UpdatedDate             int64              `json:"updatedDate" bson:"updatedDate"`
+	Date                    time.Time          `json:"date" bson:"date"`
 	ServiceList             []SystemService    `json:"serviceList" bson:"serviceList"`
 }
 

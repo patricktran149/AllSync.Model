@@ -32,6 +32,7 @@ type Queue struct {
 	RetryDays         int                      `json:"retryDays" bson:"retryDays"`
 	IntegrationFlowID primitive.ObjectID       `json:"integrationFlowID" bson:"integrationFlowID"`
 	Logs              []QueueLog               `json:"logs" bson:"logs"`
+	Date              time.Time                `json:"date" json:"date"`
 	CreatedDate       int64                    `json:"createdDate,omitempty" bson:"createdDate,omitempty"`
 	CreatedBy         string                   `json:"createdBy" bson:"createdBy"`
 	UpdatedDate       int64                    `json:"updatedDate,omitempty" bson:"updatedDate,omitempty"`
