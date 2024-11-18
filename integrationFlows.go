@@ -32,6 +32,7 @@ type IntegrationFlowConfig struct {
 	SFTP            SFTPConfig             `json:"sftp" bson:"sftp"`
 	API             APIConfig              `json:"api" bson:"api"`
 	OAuth           APIConfig              `json:"oAuth" bson:"oAuth"`
+	OAuthList       []APIConfig            `json:"oAuthList" bson:"oAuthList"`
 	SQL             SQLConfig              `json:"sql" bson:"sql"`
 	Oracle          OracleConfig           `json:"oracle" bson:"oracle"`
 	SAPHana         SAPHanaConfig          `json:"sapHana" bson:"sapHana"`
