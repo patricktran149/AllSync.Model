@@ -23,26 +23,26 @@ type IntegrationFlow struct {
 }
 
 type IntegrationFlowConfig struct {
-	ApplicationID   string                 `json:"applicationID" bson:"applicationID"`
-	Condition       string                 `json:"condition" bson:"condition"`
-	Name            string                 `json:"name" bson:"name"`
-	Mode            FlowMode               `json:"mode" bson:"mode"`
-	Method          FlowMethod             `json:"method" bson:"method"`
-	S3              S3                     `json:"s3" bson:"s3"`
-	SFTP            SFTPConfig             `json:"sftp" bson:"sftp"`
-	API             APIConfig              `json:"api" bson:"api"`
-	OAuth           APIConfig              `json:"oAuth" bson:"oAuth"`
-	OAuthList       []APIConfig            `json:"oAuthList" bson:"oAuthList"`
-	SQL             SQLConfig              `json:"sql" bson:"sql"`
-	Oracle          OracleConfig           `json:"oracle" bson:"oracle"`
-	SAPHana         SAPHanaConfig          `json:"sapHana" bson:"sapHana"`
-	MySQL           MySQLConfig            `json:"mysql" bson:"mysql"`
-	Email           EmailConfig            `json:"email" bson:"email"`
-	Data            map[string]interface{} `json:"data" bson:"data"`
-	Template        string                 `json:"template" bson:"template"`
-	ResponseMapping string                 `json:"responseMapping" bson:"responseMapping"`
-	SuccessTarget   *IntegrationFlowConfig `json:"successTarget" bson:"successTarget"`
-	FailedTarget    *IntegrationFlowConfig `json:"failedTarget" bson:"failedTarget"`
+	ApplicationID   string                  `json:"applicationID" bson:"applicationID"`
+	Condition       string                  `json:"condition" bson:"condition"`
+	Name            string                  `json:"name" bson:"name"`
+	Mode            FlowMode                `json:"mode" bson:"mode"`
+	Method          FlowMethod              `json:"method" bson:"method"`
+	S3              S3                      `json:"s3" bson:"s3"`
+	SFTP            SFTPConfig              `json:"sftp" bson:"sftp"`
+	API             APIConfig               `json:"api" bson:"api"`
+	OAuth           APIConfig               `json:"oAuth" bson:"oAuth"`
+	OAuthList       []IntegrationFlowConfig `json:"oAuthList" bson:"oAuthList"`
+	SQL             SQLConfig               `json:"sql" bson:"sql"`
+	Oracle          OracleConfig            `json:"oracle" bson:"oracle"`
+	SAPHana         SAPHanaConfig           `json:"sapHana" bson:"sapHana"`
+	MySQL           MySQLConfig             `json:"mysql" bson:"mysql"`
+	Email           EmailConfig             `json:"email" bson:"email"`
+	Data            map[string]interface{}  `json:"data" bson:"data"`
+	Template        string                  `json:"template" bson:"template"`
+	ResponseMapping string                  `json:"responseMapping" bson:"responseMapping"`
+	SuccessTarget   *IntegrationFlowConfig  `json:"successTarget" bson:"successTarget"`
+	FailedTarget    *IntegrationFlowConfig  `json:"failedTarget" bson:"failedTarget"`
 }
 
 type IntegrationFlowConfigAfter struct {
