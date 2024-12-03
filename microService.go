@@ -16,6 +16,7 @@ type MicroServiceResponse struct {
 	CustomCode          string                        `json:"customCode" bson:"customCode"`
 	LanguageCustomCode  string                        `json:"languageCustomCode" bson:"languageCustomCode"`
 	IsDisable           bool                          `json:"isDisable" bson:"isDisable"`
+	Timer               int                           `json:"timer" bson:"timer"`
 	ApplicationTypeList []MicroServiceApplicationType `json:"applicationTypeList" bson:"applicationTypeList"`
 	CreatedDate         int64                         `json:"createdDate" bson:"createdDate"`
 	UpdatedDate         int64                         `json:"updatedDate" bson:"updatedDate"`
@@ -33,6 +34,7 @@ type MicroServiceRequest struct {
 	CustomCode          string                        `json:"customCode" bson:"customCode"`
 	LanguageCustomCode  string                        `json:"languageCustomCode" bson:"languageCustomCode"`
 	IsDisable           bool                          `json:"isDisable" bson:"isDisable"`
+	Timer               int                           `json:"timer" bson:"timer"`
 	ApplicationTypeList []MicroServiceApplicationType `json:"applicationTypeList" bson:"applicationTypeList"`
 	CreatedBy           string                        `json:"createdBy" bson:"createdBy"`
 	UpdatedBy           string                        `json:"updatedBy" bson:"updatedBy"`
@@ -49,6 +51,7 @@ type MicroServiceUpdateRequest struct {
 	CustomCode          string                        `json:"customCode" bson:"customCode"`
 	LanguageCustomCode  string                        `json:"languageCustomCode" bson:"languageCustomCode"`
 	IsDisable           bool                          `json:"isDisable" bson:"isDisable"`
+	Timer               int                           `json:"timer" bson:"timer"`
 	ApplicationTypeList []MicroServiceApplicationType `json:"applicationTypeList" bson:"applicationTypeList"`
 	UpdatedBy           string                        `json:"updatedBy" bson:"updatedBy"`
 }
