@@ -40,6 +40,8 @@ type IntegrationFlowConfig struct {
 	Email           EmailConfig             `json:"email" bson:"email"`
 	Data            map[string]interface{}  `json:"data" bson:"data"`
 	Template        string                  `json:"template" bson:"template"`
+	IsDisable       bool                    `json:"isDisable" bson:"isDisable"`
+	CronExpression  string                  `json:"cronExpression" bson:"cronExpression"`
 	ResponseMapping string                  `json:"responseMapping" bson:"responseMapping"`
 	SuccessTarget   *IntegrationFlowConfig  `json:"successTarget" bson:"successTarget"`
 	FailedTarget    *IntegrationFlowConfig  `json:"failedTarget" bson:"failedTarget"`
