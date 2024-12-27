@@ -57,6 +57,9 @@ type MicroServiceUpdateRequest struct {
 }
 
 type MicroServiceApplicationType struct {
-	ApplicationID string `json:"applicationID" bson:"applicationID"`
-	Type          string `json:"type" bson:"type"`
+	ApplicationID  string `json:"applicationID" bson:"applicationID"`
+	Type           string `json:"type" bson:"type"`
+	JobType        string `json:"jobType" bson:"jobType"`
+	TimerValue     int    `json:"timerValue" bson:"timerValue"`
+	CronExpression string `json:"cronExpression" bson:"cronExpression"`
 }
