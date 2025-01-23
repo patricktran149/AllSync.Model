@@ -36,6 +36,7 @@ type Queue struct {
 	CreatedDate       int64                    `json:"createdDate,omitempty" bson:"createdDate,omitempty"`
 	CreatedBy         string                   `json:"createdBy" bson:"createdBy"`
 	UpdatedDate       int64                    `json:"updatedDate,omitempty" bson:"updatedDate,omitempty"`
+	UpdatedDateMs     int64                    `json:"updatedDateMs" bson:"updatedDateMs"`
 	UpdatedBy         string                   `json:"updatedBy" bson:"updatedBy"`
 }
 
