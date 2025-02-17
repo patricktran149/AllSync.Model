@@ -3,48 +3,51 @@ package Model
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Tenant struct {
-	ID             primitive.ObjectID `json:"_id" bson:"_id"`
-	TenantID       string             `json:"tenantID" bson:"tenantID"`
-	TenantName     string             `json:"tenantName" bson:"tenantName"`
-	Description    string             `json:"description" bson:"description"`
-	Token          string             `json:"token" bson:"token"`
-	Logo           string             `json:"logo" bson:"logo"`
-	IsActive       bool               `json:"isActive" bson:"isActive"`
-	DatabaseServer string             `json:"databaseServer" bson:"databaseServer"`
-	AdminEmail     string             `json:"adminEmail" bson:"adminEmail"`
-	AdminPassword  string             `json:"adminPassword,omitempty" bson:"adminPassword,omitempty"`
-	SMTP           SMTP               `json:"smtp" bson:"smtp"`
-	RateLimit      int                `json:"rateLimit" bson:"rateLimit"`
-	OrganizationID string             `json:"organizationID" bson:"organizationID"`
-	CreatedDate    int64              `json:"createdDate" bson:"createdDate"`
-	CreatedBy      string             `json:"createdBy" bson:"createdBy"`
-	UpdatedDate    int64              `json:"updatedDate" bson:"updatedDate"`
-	UpdatedBy      string             `json:"updatedBy" bson:"updatedBy"`
+	ID               primitive.ObjectID `json:"_id" bson:"_id"`
+	TenantID         string             `json:"tenantID" bson:"tenantID"`
+	TenantName       string             `json:"tenantName" bson:"tenantName"`
+	Description      string             `json:"description" bson:"description"`
+	Token            string             `json:"token" bson:"token"`
+	Logo             string             `json:"logo" bson:"logo"`
+	IsActive         bool               `json:"isActive" bson:"isActive"`
+	DatabaseServer   string             `json:"databaseServer" bson:"databaseServer"`
+	AdminEmail       string             `json:"adminEmail" bson:"adminEmail"`
+	AdminPassword    string             `json:"adminPassword,omitempty" bson:"adminPassword,omitempty"`
+	SMTP             SMTP               `json:"smtp" bson:"smtp"`
+	RateLimit        int                `json:"rateLimit" bson:"rateLimit"`
+	OrganizationID   string             `json:"organizationID" bson:"organizationID"`
+	ArchiveQueueDays int                `json:"archiveQueueDays" bson:"archiveQueueDays"`
+	CreatedDate      int64              `json:"createdDate" bson:"createdDate"`
+	CreatedBy        string             `json:"createdBy" bson:"createdBy"`
+	UpdatedDate      int64              `json:"updatedDate" bson:"updatedDate"`
+	UpdatedBy        string             `json:"updatedBy" bson:"updatedBy"`
 }
 
 type TenantRequest struct {
-	TenantName     string `json:"tenantName" bson:"tenantName"`
-	Description    string `json:"description" bson:"description"`
-	Logo           string `json:"logo" bson:"logo"`
-	IsActive       bool   `json:"isActive" bson:"isActive"`
-	DatabaseServer string `json:"databaseServer" bson:"databaseServer"`
-	AdminEmail     string `json:"adminEmail" bson:"adminEmail"`
-	AdminPassword  string `json:"adminPassword" bson:"adminPassword"`
-	SMTP           SMTP   `json:"smtp" bson:"smtp"`
-	OrganizationID string `json:"organizationID" bson:"organizationID"`
-	CreatedBy      string `json:"createdBy" bson:"createdBy"`
-	UpdatedBy      string `json:"updatedBy" bson:"updatedBy"`
+	TenantName       string `json:"tenantName" bson:"tenantName"`
+	Description      string `json:"description" bson:"description"`
+	Logo             string `json:"logo" bson:"logo"`
+	IsActive         bool   `json:"isActive" bson:"isActive"`
+	DatabaseServer   string `json:"databaseServer" bson:"databaseServer"`
+	AdminEmail       string `json:"adminEmail" bson:"adminEmail"`
+	AdminPassword    string `json:"adminPassword" bson:"adminPassword"`
+	SMTP             SMTP   `json:"smtp" bson:"smtp"`
+	OrganizationID   string `json:"organizationID" bson:"organizationID"`
+	ArchiveQueueDays int    `json:"archiveQueueDays" bson:"archiveQueueDays"`
+	CreatedBy        string `json:"createdBy" bson:"createdBy"`
+	UpdatedBy        string `json:"updatedBy" bson:"updatedBy"`
 }
 
 type TenantUpdateRequest struct {
-	TenantName     string `json:"tenantName" bson:"tenantName"`
-	Description    string `json:"description" bson:"description"`
-	Logo           string `json:"logo" bson:"logo"`
-	IsActive       bool   `json:"isActive" bson:"isActive"`
-	DatabaseServer string `json:"databaseServer" bson:"databaseServer"`
-	SMTP           SMTP   `json:"smtp" bson:"smtp"`
-	OrganizationID string `json:"organizationID" bson:"organizationID"`
-	UpdatedBy      string `json:"updatedBy" bson:"updatedBy"`
+	TenantName       string `json:"tenantName" bson:"tenantName"`
+	Description      string `json:"description" bson:"description"`
+	Logo             string `json:"logo" bson:"logo"`
+	IsActive         bool   `json:"isActive" bson:"isActive"`
+	DatabaseServer   string `json:"databaseServer" bson:"databaseServer"`
+	SMTP             SMTP   `json:"smtp" bson:"smtp"`
+	OrganizationID   string `json:"organizationID" bson:"organizationID"`
+	ArchiveQueueDays int    `json:"archiveQueueDays" bson:"archiveQueueDays"`
+	UpdatedBy        string `json:"updatedBy" bson:"updatedBy"`
 }
 
 type SMTP struct {
