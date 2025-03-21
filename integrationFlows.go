@@ -47,25 +47,6 @@ type IntegrationFlowConfig struct {
 	FailedTarget    *IntegrationFlowConfig  `json:"failedTarget" bson:"failedTarget"`
 }
 
-type IntegrationFlowConfigAfter struct {
-	ApplicationID   string                 `json:"applicationID" bson:"applicationID"`
-	Condition       string                 `json:"condition" bson:"condition"`
-	Name            string                 `json:"name" bson:"name"`
-	Mode            FlowMode               `json:"mode" bson:"mode"`
-	Method          FlowMethod             `json:"method" bson:"method"`
-	S3              S3                     `json:"s3" bson:"s3"`
-	SFTP            SFTPConfig             `json:"sftp" bson:"sftp"`
-	API             APIConfig              `json:"api" bson:"api"`
-	OAuth           APIConfig              `json:"oAuth" bson:"oAuth"`
-	SQL             SQLConfig              `json:"sql" bson:"sql"`
-	Oracle          OracleConfig           `json:"oracle" bson:"oracle"`
-	SAPHana         SAPHanaConfig          `json:"sapHana" bson:"sapHana"`
-	MySQL           MySQLConfig            `json:"mysql" bson:"mysql"`
-	Data            map[string]interface{} `json:"data" bson:"data"`
-	Template        string                 `json:"template" bson:"template"`
-	ResponseMapping string                 `json:"responseMapping" bson:"responseMapping"`
-}
-
 type IntegrationFlowRequest struct {
 	FromApp     string                   `json:"fromApplicationID" bson:"fromApplicationID"`
 	ToApp       string                   `json:"toApplicationID" bson:"toApplicationID"`
@@ -152,20 +133,21 @@ type MySQLConfig struct {
 }
 
 type APIConfig struct {
-	URL                string                 `json:"url" bson:"url"`
-	AuthenticationType AuthenticationType     `json:"authenticationType" bson:"authenticationType"`
-	HMAC               HMACConfig             `json:"hmac" bson:"hmac"`
-	OAuth1             OAuth1                 `json:"oAuth1" bson:"oAuth1"`
-	OAuth2             OAuth2                 `json:"oAuth2" bson:"oAuth2"`
-	Token              string                 `json:"token" bson:"token"`
-	Method             string                 `json:"method" bson:"method"`
-	BasicAuth          BasicAuth              `json:"basicAuth" bson:"basicAuth"`
-	IsMandatory        bool                   `json:"isMandatory" bson:"isMandatory"`
-	Body               map[string]interface{} `json:"body" bson:"body"`
-	Params             map[string]interface{} `json:"params" bson:"params"`
-	Headers            map[string]interface{} `json:"headers" bson:"headers"`
-	Template           string                 `json:"template" bson:"template"`
-	P12                P12                    `json:"p12" bson:"p12"`
+	URL                   string                 `json:"url" bson:"url"`
+	AuthenticationType    AuthenticationType     `json:"authenticationType" bson:"authenticationType"`
+	HMAC                  HMACConfig             `json:"hmac" bson:"hmac"`
+	OAuth1                OAuth1                 `json:"oAuth1" bson:"oAuth1"`
+	OAuth2                OAuth2                 `json:"oAuth2" bson:"oAuth2"`
+	Token                 string                 `json:"token" bson:"token"`
+	Method                string                 `json:"method" bson:"method"`
+	BasicAuth             BasicAuth              `json:"basicAuth" bson:"basicAuth"`
+	IsMandatory           bool                   `json:"isMandatory" bson:"isMandatory"`
+	Body                  map[string]interface{} `json:"body" bson:"body"`
+	Params                map[string]interface{} `json:"params" bson:"params"`
+	Headers               map[string]interface{} `json:"headers" bson:"headers"`
+	Template              string                 `json:"template" bson:"template"`
+	P12                   P12                    `json:"p12" bson:"p12"`
+	ResponseStatusMapping string                 `json:"responseStatusMapping" bson:"responseStatusMapping"`
 }
 
 type OAuth1 struct {
