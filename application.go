@@ -16,6 +16,7 @@ type Application struct {
 	ImmediateRetryTimes  int                        `json:"immediateRetryTimes" bson:"immediateRetryTimes"`
 	OutgoingAPISleep     int                        `json:"outgoingAPISleep" bson:"outgoingAPISleep"`
 	AutoRetry            bool                       `json:"autoRetry" bson:"autoRetry"`
+	OnPremise            bool                       `json:"onPremise" bson:"onPremise"`
 	TimeOut              int                        `json:"timeOut" bson:"timeOut"`
 	EnableOAuth2         bool                       `json:"enableOAuth2" bson:"enableOAuth2"`
 	AuthorizeURL         string                     `json:"authorizeURL" bson:"authorizeURL"`
@@ -42,6 +43,7 @@ type ApplicationRequest struct {
 	ImmediateRetryTimes  int                        `json:"immediateRetryTimes" bson:"immediateRetryTimes"`
 	OutgoingAPISleep     int                        `json:"outgoingAPISleep" bson:"outgoingAPISleep"`
 	AutoRetry            bool                       `json:"autoRetry" bson:"autoRetry"`
+	OnPremise            bool                       `json:"onPremise" bson:"onPremise"`
 	TimeOut              int                        `json:"timeOut" bson:"timeOut"`
 	EnableOAuth2         bool                       `json:"enableOAuth2" bson:"enableOAuth2"`
 	AuthorizeURL         string                     `json:"authorizeURL" bson:"authorizeURL"`
@@ -68,6 +70,7 @@ type ApplicationUpdateRequest struct {
 	ImmediateRetryTimes  int                                     `json:"immediateRetryTimes" bson:"immediateRetryTimes"`
 	OutgoingAPISleep     int                                     `json:"outgoingAPISleep" bson:"outgoingAPISleep"`
 	AutoRetry            bool                                    `json:"autoRetry" bson:"autoRetry"`
+	OnPremise            bool                                    `json:"onPremise" bson:"onPremise"`
 	TimeOut              int                                     `json:"timeOut" bson:"timeOut"`
 	EnableOAuth2         bool                                    `json:"enableOAuth2" bson:"enableOAuth2"`
 	AuthorizeURL         string                                  `json:"authorizeURL" bson:"authorizeURL"`
