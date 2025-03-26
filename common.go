@@ -47,6 +47,7 @@ type Data struct {
 
 	//------------------Array-----------------
 	ObjectList                        []bson.M                        `json:"objectList"`
+	UserList                          []bson.M                        `json:"userList"`
 	QueueIncomingList                 []Queue                         `json:"queueIncomingList"`
 	QueueOutgoingList                 []Queue                         `json:"queueOutgoingList"`
 	QueueSFTPList                     []Queue                         `json:"queueSFTPList"`
@@ -67,6 +68,7 @@ type Data struct {
 	//------------------Object-----------------
 
 	Object                        bson.M                        `json:"object"`
+	User                          bson.M                        `json:"user"`
 	QueueIncoming                 Queue                         `json:"queueIncoming"`
 	QueueOutgoing                 Queue                         `json:"queueOutgoing"`
 	QueueSFTP                     Queue                         `json:"queueSFTP"`
