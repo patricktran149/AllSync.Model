@@ -32,3 +32,11 @@ type LiquidObjectOverView struct {
 	Data     map[string]interface{} `json:"data"`
 	Template string                 `json:"template"`
 }
+
+type ObjectChildSave struct {
+	ApplicationID string `json:"applicationID"`
+	TableName     string `json:"tableName"`
+	Key           string `json:"key"`
+	ChildName     string `json:"childName"`
+	Fields        bson.M `json:"fields"`
+}
