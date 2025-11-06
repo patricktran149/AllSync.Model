@@ -3,12 +3,13 @@ package Model
 import (
 	"errors"
 	"fmt"
-	"github.com/mohae/deepcopy"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/mohae/deepcopy"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type UserDefinedTable struct {
